@@ -1,0 +1,2295 @@
+
+R version 4.5.1 (2025-06-13 ucrt) -- "Great Square Root"
+Copyright (C) 2025 The R Foundation for Statistical Computing
+Platform: x86_64-w64-mingw32/x64
+
+R is free software and comes with ABSOLUTELY NO WARRANTY.
+You are welcome to redistribute it under certain conditions.
+Type 'license()' or 'licence()' for distribution details.
+
+  Natural language support but running in an English locale
+
+R is a collaborative project with many contributors.
+Type 'contributors()' for more information and
+'citation()' on how to cite R or R packages in publications.
+
+Type 'demo()' for some demos, 'help()' for on-line help, or
+'help.start()' for an HTML browser interface to help.
+Type 'q()' to quit R.
+
+> 2 + 2
+[1] 4
+> 5 * 3
+[1] 15
+> 10 / 2
+[1] 5
+> sqrt(49)
+[1] 7
+> plot(x, y, main = "Simple Plot", xlab = "X values", ylab = "Y squared", col = "blue", pch = 19)
+Error: object 'x' not found
+> install.packages("ggplot2")
+Warning in install.packages("ggplot2") :
+  'lib = "C:/Program Files/R/R-4.5.1/library"' is not writable
+Error in install.packages("ggplot2") : unable to install packages
+> install.packages("ggplot2", repos = "https://cloud.r-project.org")
+Warning in install.packages("ggplot2", repos = "https://cloud.r-project.org") :
+  'lib = "C:/Program Files/R/R-4.5.1/library"' is not writable
+also installing the dependencies ‘glue’, ‘farver’, ‘labeling’, ‘R6’, ‘RColorBrewer’, ‘viridisLite’, ‘cli’, ‘gtable’, ‘isoband’, ‘lifecycle’, ‘rlang’, ‘S7’, ‘scales’, ‘vctrs’, ‘withr’
+
+trying URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/glue_1.8.0.zip'
+trying URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/farver_2.1.2.zip'
+trying URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/labeling_0.4.3.zip'
+trying URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/R6_2.6.1.zip'
+trying URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/RColorBrewer_1.1-3.zip'
+trying URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/viridisLite_0.4.2.zip'
+trying URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/cli_3.6.5.zip'
+trying URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/gtable_0.3.6.zip'
+trying URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/isoband_0.2.7.zip'
+trying URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/lifecycle_1.0.4.zip'
+trying URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/rlang_1.1.6.zip'
+trying URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/S7_0.2.0.zip'
+trying URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/scales_1.4.0.zip'
+trying URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/vctrs_0.6.5.zip'
+trying URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/withr_3.0.2.zip'
+trying URL 'https://cloud.r-project.org/bin/windows/contrib/4.5/ggplot2_4.0.0.zip'
+package ‘glue’ successfully unpacked and MD5 sums checked
+package ‘farver’ successfully unpacked and MD5 sums checked
+package ‘labeling’ successfully unpacked and MD5 sums checked
+package ‘R6’ successfully unpacked and MD5 sums checked
+package ‘RColorBrewer’ successfully unpacked and MD5 sums checked
+package ‘viridisLite’ successfully unpacked and MD5 sums checked
+package ‘cli’ successfully unpacked and MD5 sums checked
+package ‘gtable’ successfully unpacked and MD5 sums checked
+package ‘isoband’ successfully unpacked and MD5 sums checked
+package ‘lifecycle’ successfully unpacked and MD5 sums checked
+package ‘rlang’ successfully unpacked and MD5 sums checked
+package ‘S7’ successfully unpacked and MD5 sums checked
+package ‘scales’ successfully unpacked and MD5 sums checked
+package ‘vctrs’ successfully unpacked and MD5 sums checked
+package ‘withr’ successfully unpacked and MD5 sums checked
+package ‘ggplot2’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+        C:\Users\palak\AppData\Local\Temp\RtmpO6iQs1\downloaded_packages
+> # Create sample data
+> data <- data.frame(
++   x = 1:10,
++   y = c(2, 3, 5, 7, 11, 13, 17, 19, 23, 29)
++ )
+> 
+> # Create a ggplot scatter plot
+> ggplot(data, aes(x = x, y = y)) +
++   geom_point(color = "darkblue", size = 3) +                 # Add data points
++   geom_smooth(method = "lm", se = FALSE, color = "red") +    # Add regression line
++   labs(
++     title = "Sample Scatter Plot with ggplot2",
++     subtitle = "Example using a simple dataset",
++     x = "X Axis",
++     y = "Y Axis"
++   ) +
++   theme_minimal() +                                          # Clean theme
++   theme(
++     plot.title = element_text(face = "bold", size = 14),
++     plot.subtitle = element_text(size = 10),
++     axis.title = element_text(face = "bold")
++   )
+Error in ggplot(data, aes(x = x, y = y)) : 
+  could not find function "ggplot"
+> # Load ggplot2
+> library(ggplot2)
+> 
+> # Create a simple dataset
+> data <- data.frame(
++   x = 1:10,
++   y = c(2, 3, 5, 7, 11, 13, 17, 19, 23, 29)
++ )
+> 
+> # Make a scatter plot
+> ggplot(data, aes(x = x, y = y)) +
++   geom_point(color = "darkblue", size = 3) +
++   geom_smooth(method = "lm", se = FALSE, color = "red") +
++   labs(
++     title = "Test Plot with ggplot2",
++     x = "X Axis",
++     y = "Y Axis"
++   ) +
++   theme_minimal()
+`geom_smooth()` using formula = 'y ~ x'
+> import kagglehub
+Error: unexpected symbol in "import kagglehub"
+> 
+> # Download latest version
+> path = kagglehub.dataset_download("pavansubhasht/ibm-hr-analytics-attrition-dataset")
+Error in kagglehub.dataset_download("pavansubhasht/ibm-hr-analytics-attrition-dataset") : 
+  could not find function "kagglehub.dataset_download"
+> 
+> print("Path to dataset files:", path)
+Error: object 'path' not found
+> import pandas as pd
+Error: unexpected symbol in "import pandas"
+> import numpy as np
+Error: unexpected symbol in "import numpy"
+> import matplotlib.pyplot as plt
+Error: unexpected symbol in "import matplotlib.pyplot"
+> import seaborn as sns
+Error: unexpected symbol in "import seaborn"
+> import warnings
+Error: unexpected symbol in "import warnings"
+> warnings.filterwarnings('ignore')
+Error in warnings.filterwarnings("ignore") : 
+  could not find function "warnings.filterwarnings"
+> # Install if needed
+> install.packages("readxl")
+Installing package into ‘C:/Users/palak/AppData/Local/R/win-library/4.5’
+(as ‘lib’ is unspecified)
+--- Please select a CRAN mirror for use in this session ---
+Error in contrib.url(repos, "source") : 
+  trying to use CRAN without setting a mirror
+> 
+> # Load the library
+> library(readxl)
+Error in library(readxl) : there is no package called ‘readxl’
+> 
+> # Import your dataset
+> data <- read_excel("your_file.xlsx")
+Error in read_excel("your_file.xlsx") : 
+  could not find function "read_excel"
+> 
+> # Install if needed
+> install.packages("readxl")
+Installing package into ‘C:/Users/palak/AppData/Local/R/win-library/4.5’
+(as ‘lib’ is unspecified)
+--- Please select a CRAN mirror for use in this session ---
+also installing the dependencies ‘utf8’, ‘rematch’, ‘magrittr’, ‘pillar’, ‘pkgconfig’, ‘crayon’, ‘hms’, ‘prettyunits’, ‘cellranger’, ‘tibble’, ‘cpp11’, ‘progress’
+
+trying URL 'https://mirrors.nics.utk.edu/cran/bin/windows/contrib/4.5/utf8_1.2.6.zip'
+trying URL 'https://mirrors.nics.utk.edu/cran/bin/windows/contrib/4.5/rematch_2.0.0.zip'
+trying URL 'https://mirrors.nics.utk.edu/cran/bin/windows/contrib/4.5/magrittr_2.0.4.zip'
+trying URL 'https://mirrors.nics.utk.edu/cran/bin/windows/contrib/4.5/pillar_1.11.1.zip'
+trying URL 'https://mirrors.nics.utk.edu/cran/bin/windows/contrib/4.5/pkgconfig_2.0.3.zip'
+trying URL 'https://mirrors.nics.utk.edu/cran/bin/windows/contrib/4.5/crayon_1.5.3.zip'
+trying URL 'https://mirrors.nics.utk.edu/cran/bin/windows/contrib/4.5/hms_1.1.3.zip'
+trying URL 'https://mirrors.nics.utk.edu/cran/bin/windows/contrib/4.5/prettyunits_1.2.0.zip'
+trying URL 'https://mirrors.nics.utk.edu/cran/bin/windows/contrib/4.5/cellranger_1.1.0.zip'
+trying URL 'https://mirrors.nics.utk.edu/cran/bin/windows/contrib/4.5/tibble_3.3.0.zip'
+trying URL 'https://mirrors.nics.utk.edu/cran/bin/windows/contrib/4.5/cpp11_0.5.2.zip'
+trying URL 'https://mirrors.nics.utk.edu/cran/bin/windows/contrib/4.5/progress_1.2.3.zip'
+trying URL 'https://mirrors.nics.utk.edu/cran/bin/windows/contrib/4.5/readxl_1.4.5.zip'
+package ‘utf8’ successfully unpacked and MD5 sums checked
+package ‘rematch’ successfully unpacked and MD5 sums checked
+package ‘magrittr’ successfully unpacked and MD5 sums checked
+package ‘pillar’ successfully unpacked and MD5 sums checked
+package ‘pkgconfig’ successfully unpacked and MD5 sums checked
+package ‘crayon’ successfully unpacked and MD5 sums checked
+package ‘hms’ successfully unpacked and MD5 sums checked
+package ‘prettyunits’ successfully unpacked and MD5 sums checked
+package ‘cellranger’ successfully unpacked and MD5 sums checked
+package ‘tibble’ successfully unpacked and MD5 sums checked
+package ‘cpp11’ successfully unpacked and MD5 sums checked
+package ‘progress’ successfully unpacked and MD5 sums checked
+package ‘readxl’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+        C:\Users\palak\AppData\Local\Temp\RtmpO6iQs1\downloaded_packages
+> 
+> # Load the library
+> library(readxl)
+> data <- read_excel("Employee_Attrition.xlsx")
+Error: `path` does not exist: ‘Employee_Attrition.xlsx’
+> setwd("C:/Users/Palak/OneDrive/Documents/attrition_data.xlsx
++ 
++ 
+
++ > setwd("C:/Users/Palak/OneDrive/Desktop/Employee_Attrition.xlsx")
+Error in setwd("C:/Users/Palak/OneDrive/Desktop/Employee_Attrition.xlsx") : 
+  cannot change working directory
+> library(readxl)
+> 
+> # full, correct path to your file
+> data <- read_excel("C:/Users/palak/OneDrive/Desktop/Employee_Attrition.xlsx")
+Error: `path` does not exist: ‘C:/Users/palak/OneDrive/Desktop/Employee_Attrition.xlsx’
+> 
+> # check that it loaded
+> head(data)
+  x  y
+1 1  2
+2 2  3
+3 3  5
+4 4  7
+5 5 11
+6 6 13
+> library(readxl)
+> 
+> # full, correct path to your file
+> data <- read_excel("C:/Users/palak/OneDrive/Desktop/Employee_Attrition.xlsx")
+Error: `path` does not exist: ‘C:/Users/palak/OneDrive/Desktop/Employee_Attrition.xlsx’
+> 
+> # check that it loaded
+> head(data)
+  x  y
+1 1  2
+2 2  3
+3 3  5
+4 4  7
+5 5 11
+6 6 13
+> library(readxl)
+> 
+> # full, correct path to your file
+> data <- read_excel("C:/Users/palak/OneDrive/Desktop/Employee_Attrition.xlsx")
+Error: `path` does not exist: ‘C:/Users/palak/OneDrive/Desktop/Employee_Attrition.xlsx’
+> 
+> # check that it loaded
+> head(data)
+  x  y
+1 1  2
+2 2  3
+3 3  5
+4 4  7
+5 5 11
+6 6 13
+> library(readxl)
+> data <- read_excel("C:/Users/palak/Documents/Employee_Attrition.xlsx")
+Error: `path` does not exist: ‘C:/Users/palak/Documents/Employee_Attrition.xlsx’
+> head(data)
+  x  y
+1 1  2
+2 2  3
+3 3  5
+4 4  7
+5 5 11
+6 6 13
+> install.packages("readxl", dependencies = TRUE)
+Warning: package ‘readxl’ is in use and will not be installed
+> library(readxl)
+> data <- read_excel(file.choose())   # a dialog opens — click your file
+Error: Can't establish that the input is either xls or xlsx.
+> head(data)
+  x  y
+1 1  2
+2 2  3
+3 3  5
+4 4  7
+5 5 11
+6 6 13
+> library(readxl)
+> 
+> data <- read_excel("C:/Users/palak/OneDrive/Desktop/Employee_Attrition.xlsx")
+Error: `path` does not exist: ‘C:/Users/palak/OneDrive/Desktop/Employee_Attrition.xlsx’
+> head(data)
+  x  y
+1 1  2
+2 2  3
+3 3  5
+4 4  7
+5 5 11
+6 6 13
+> library(readxl)
+> 
+> data <- read_excel("C:/Users/palak/OneDrive/Desktop/Employee_Attrition.xlsx")
+Error: `path` does not exist: ‘C:/Users/palak/OneDrive/Desktop/Employee_Attrition.xlsx’
+> head(data)
+  x  y
+1 1  2
+2 2  3
+3 3  5
+4 4  7
+5 5 11
+6 6 13
+> data <- read.csv(file.choose(), stringsAsFactors = FALSE)
+Error in type.convert.default(data[[i]], as.is = as.is[i], dec = dec,  : 
+  invalid multibyte string at '<af><f9>\<e9>'
+In addition: Warning messages:
+1: In read.table(file = file, header = header, sep = sep, quote = quote,  :
+  line 1 appears to contain embedded nulls
+2: In read.table(file = file, header = header, sep = sep, quote = quote,  :
+  line 2 appears to contain embedded nulls
+3: In read.table(file = file, header = header, sep = sep, quote = quote,  :
+  line 5 appears to contain embedded nulls
+4: In scan(file = file, what = what, sep = sep, quote = quote, dec = dec,  :
+  EOF within quoted string
+5: In scan(file = file, what = what, sep = sep, quote = quote, dec = dec,  :
+  embedded nul(s) found in input
+> head(data)
+  x  y
+1 1  2
+2 2  3
+3 3  5
+4 4  7
+5 5 11
+6 6 13
+> dim(data)
+[1] 10  2
+> str(data)
+'data.frame':   10 obs. of  2 variables:
+ $ x: int  1 2 3 4 5 6 7 8 9 10
+ $ y: num  2 3 5 7 11 13 17 19 23 29
+> rm(data)      # remove any old object named 'data'
+> gc() 
+          used  (Mb) gc trigger  (Mb) max used  (Mb)
+Ncells 2147048 114.7    4411378 235.6  3337392 178.3
+Vcells 3847649  29.4   10146329  77.5 10144666  77.4
+> library(readxl)
+> path <- choose.files()                   # pick your .xlsx
+> path                                     
+[1] "C:\\Users\\palak\\OneDrive\\Documents\\Employee_Attrition.xlsx"
+> tools::file_ext(path)                    # should print "xlsx"
+[1] "xlsx"
+> data <- read_excel(path, .name_repair = "unique")
+-/                                                                                                                                                        /                                                                                                                                                        -                                                                                                                                                        > str(data); head(data)
+tibble [1,470 × 35] (S3: tbl_df/tbl/data.frame)
+ $ Age                     : num [1:1470] 41 49 37 33 27 32 59 30 38 36 ...
+ $ Attrition               : chr [1:1470] "Yes" "No" "Yes" "No" ...
+ $ BusinessTravel          : chr [1:1470] "Travel_Rarely" "Travel_Frequently" "Travel_Rarely" "Travel_Frequently" ...
+ $ DailyRate               : num [1:1470] 1102 279 1373 1392 591 ...
+ $ Department              : chr [1:1470] "Sales" "Research & Development" "Research & Development" "Research & Development" ...
+ $ DistanceFromHome        : num [1:1470] 1 8 2 3 2 2 3 24 23 27 ...
+ $ Education               : num [1:1470] 2 1 2 4 1 2 3 1 3 3 ...
+ $ EducationField          : chr [1:1470] "Life Sciences" "Life Sciences" "Other" "Life Sciences" ...
+ $ EmployeeCount           : num [1:1470] 1 1 1 1 1 1 1 1 1 1 ...
+ $ EmployeeNumber          : num [1:1470] 1 2 4 5 7 8 10 11 12 13 ...
+ $ EnvironmentSatisfaction : num [1:1470] 2 3 4 4 1 4 3 4 4 3 ...
+ $ Gender                  : chr [1:1470] "Female" "Male" "Male" "Female" ...
+ $ HourlyRate              : num [1:1470] 94 61 92 56 40 79 81 67 44 94 ...
+ $ JobInvolvement          : num [1:1470] 3 2 2 3 3 3 4 3 2 3 ...
+ $ JobLevel                : num [1:1470] 2 2 1 1 1 1 1 1 3 2 ...
+ $ JobRole                 : chr [1:1470] "Sales Executive" "Research Scientist" "Laboratory Technician" "Research Scientist" ...
+ $ JobSatisfaction         : num [1:1470] 4 2 3 3 2 4 1 3 3 3 ...
+ $ MaritalStatus           : chr [1:1470] "Single" "Married" "Single" "Married" ...
+ $ MonthlyIncome           : num [1:1470] 5993 5130 2090 2909 3468 ...
+ $ MonthlyRate             : num [1:1470] 19479 24907 2396 23159 16632 ...
+ $ NumCompaniesWorked      : num [1:1470] 8 1 6 1 9 0 4 1 0 6 ...
+ $ Over18                  : chr [1:1470] "Y" "Y" "Y" "Y" ...
+ $ OverTime                : chr [1:1470] "Yes" "No" "Yes" "Yes" ...
+ $ PercentSalaryHike       : num [1:1470] 11 23 15 11 12 13 20 22 21 13 ...
+ $ PerformanceRating       : num [1:1470] 3 4 3 3 3 3 4 4 4 3 ...
+ $ RelationshipSatisfaction: num [1:1470] 1 4 2 3 4 3 1 2 2 2 ...
+ $ StandardHours           : num [1:1470] 80 80 80 80 80 80 80 80 80 80 ...
+ $ StockOptionLevel        : num [1:1470] 0 1 0 0 1 0 3 1 0 2 ...
+ $ TotalWorkingYears       : num [1:1470] 8 10 7 8 6 8 12 1 10 17 ...
+ $ TrainingTimesLastYear   : num [1:1470] 0 3 3 3 3 2 3 2 2 3 ...
+ $ WorkLifeBalance         : num [1:1470] 1 3 3 3 3 2 2 3 3 2 ...
+ $ YearsAtCompany          : num [1:1470] 6 10 0 8 2 7 1 1 9 7 ...
+ $ YearsInCurrentRole      : num [1:1470] 4 7 0 7 2 7 0 0 7 7 ...
+ $ YearsSinceLastPromotion : num [1:1470] 0 1 0 3 2 3 0 0 1 7 ...
+ $ YearsWithCurrManager    : num [1:1470] 5 7 0 0 2 6 0 0 8 7 ...
+# A tibble: 6 × 35
+    Age Attrition BusinessTravel DailyRate Department DistanceFromHome Education EducationField EmployeeCount EmployeeNumber EnvironmentSatisfact…¹ Gender
+  <dbl> <chr>     <chr>              <dbl> <chr>                 <dbl>     <dbl> <chr>                  <dbl>          <dbl>                  <dbl> <chr> 
+1    41 Yes       Travel_Rarely       1102 Sales                     1         2 Life Sciences              1              1                      2 Female
+2    49 No        Travel_Freque…       279 Research …                8         1 Life Sciences              1              2                      3 Male  
+3    37 Yes       Travel_Rarely       1373 Research …                2         2 Other                      1              4                      4 Male  
+4    33 No        Travel_Freque…      1392 Research …                3         4 Life Sciences              1              5                      4 Female
+5    27 No        Travel_Rarely        591 Research …                2         1 Medical                    1              7                      1 Male  
+6    32 No        Travel_Freque…      1005 Research …                2         2 Life Sciences              1              8                      4 Male  
+# ℹ abbreviated name: ¹​EnvironmentSatisfaction
+# ℹ 23 more variables: HourlyRate <dbl>, JobInvolvement <dbl>, JobLevel <dbl>, JobRole <chr>, JobSatisfaction <dbl>, MaritalStatus <chr>,
+#   MonthlyIncome <dbl>, MonthlyRate <dbl>, NumCompaniesWorked <dbl>, Over18 <chr>, OverTime <chr>, PercentSalaryHike <dbl>, PerformanceRating <dbl>,
+#   RelationshipSatisfaction <dbl>, StandardHours <dbl>, StockOptionLevel <dbl>, TotalWorkingYears <dbl>, TrainingTimesLastYear <dbl>,
+#   WorkLifeBalance <dbl>, YearsAtCompany <dbl>, YearsInCurrentRole <dbl>, YearsSinceLastPromotion <dbl>, YearsWithCurrManager <dbl>
+> 
+> # Check first few rows
+> head(data)
+# A tibble: 6 × 35
+    Age Attrition BusinessTravel DailyRate Department DistanceFromHome Education EducationField EmployeeCount EmployeeNumber EnvironmentSatisfact…¹ Gender
+  <dbl> <chr>     <chr>              <dbl> <chr>                 <dbl>     <dbl> <chr>                  <dbl>          <dbl>                  <dbl> <chr> 
+1    41 Yes       Travel_Rarely       1102 Sales                     1         2 Life Sciences              1              1                      2 Female
+2    49 No        Travel_Freque…       279 Research …                8         1 Life Sciences              1              2                      3 Male  
+3    37 Yes       Travel_Rarely       1373 Research …                2         2 Other                      1              4                      4 Male  
+4    33 No        Travel_Freque…      1392 Research …                3         4 Life Sciences              1              5                      4 Female
+5    27 No        Travel_Rarely        591 Research …                2         1 Medical                    1              7                      1 Male  
+6    32 No        Travel_Freque…      1005 Research …                2         2 Life Sciences              1              8                      4 Male  
+# ℹ abbreviated name: ¹​EnvironmentSatisfaction
+# ℹ 23 more variables: HourlyRate <dbl>, JobInvolvement <dbl>, JobLevel <dbl>, JobRole <chr>, JobSatisfaction <dbl>, MaritalStatus <chr>,
+#   MonthlyIncome <dbl>, MonthlyRate <dbl>, NumCompaniesWorked <dbl>, Over18 <chr>, OverTime <chr>, PercentSalaryHike <dbl>, PerformanceRating <dbl>,
+#   RelationshipSatisfaction <dbl>, StandardHours <dbl>, StockOptionLevel <dbl>, TotalWorkingYears <dbl>, TrainingTimesLastYear <dbl>,
+#   WorkLifeBalance <dbl>, YearsAtCompany <dbl>, YearsInCurrentRole <dbl>, YearsSinceLastPromotion <dbl>, YearsWithCurrManager <dbl>
+> 
+> # Check structure and types
+> str(data)
+tibble [1,470 × 35] (S3: tbl_df/tbl/data.frame)
+ $ Age                     : num [1:1470] 41 49 37 33 27 32 59 30 38 36 ...
+ $ Attrition               : chr [1:1470] "Yes" "No" "Yes" "No" ...
+ $ BusinessTravel          : chr [1:1470] "Travel_Rarely" "Travel_Frequently" "Travel_Rarely" "Travel_Frequently" ...
+ $ DailyRate               : num [1:1470] 1102 279 1373 1392 591 ...
+ $ Department              : chr [1:1470] "Sales" "Research & Development" "Research & Development" "Research & Development" ...
+ $ DistanceFromHome        : num [1:1470] 1 8 2 3 2 2 3 24 23 27 ...
+ $ Education               : num [1:1470] 2 1 2 4 1 2 3 1 3 3 ...
+ $ EducationField          : chr [1:1470] "Life Sciences" "Life Sciences" "Other" "Life Sciences" ...
+ $ EmployeeCount           : num [1:1470] 1 1 1 1 1 1 1 1 1 1 ...
+ $ EmployeeNumber          : num [1:1470] 1 2 4 5 7 8 10 11 12 13 ...
+ $ EnvironmentSatisfaction : num [1:1470] 2 3 4 4 1 4 3 4 4 3 ...
+ $ Gender                  : chr [1:1470] "Female" "Male" "Male" "Female" ...
+ $ HourlyRate              : num [1:1470] 94 61 92 56 40 79 81 67 44 94 ...
+ $ JobInvolvement          : num [1:1470] 3 2 2 3 3 3 4 3 2 3 ...
+ $ JobLevel                : num [1:1470] 2 2 1 1 1 1 1 1 3 2 ...
+ $ JobRole                 : chr [1:1470] "Sales Executive" "Research Scientist" "Laboratory Technician" "Research Scientist" ...
+ $ JobSatisfaction         : num [1:1470] 4 2 3 3 2 4 1 3 3 3 ...
+ $ MaritalStatus           : chr [1:1470] "Single" "Married" "Single" "Married" ...
+ $ MonthlyIncome           : num [1:1470] 5993 5130 2090 2909 3468 ...
+ $ MonthlyRate             : num [1:1470] 19479 24907 2396 23159 16632 ...
+ $ NumCompaniesWorked      : num [1:1470] 8 1 6 1 9 0 4 1 0 6 ...
+ $ Over18                  : chr [1:1470] "Y" "Y" "Y" "Y" ...
+ $ OverTime                : chr [1:1470] "Yes" "No" "Yes" "Yes" ...
+ $ PercentSalaryHike       : num [1:1470] 11 23 15 11 12 13 20 22 21 13 ...
+ $ PerformanceRating       : num [1:1470] 3 4 3 3 3 3 4 4 4 3 ...
+ $ RelationshipSatisfaction: num [1:1470] 1 4 2 3 4 3 1 2 2 2 ...
+ $ StandardHours           : num [1:1470] 80 80 80 80 80 80 80 80 80 80 ...
+ $ StockOptionLevel        : num [1:1470] 0 1 0 0 1 0 3 1 0 2 ...
+ $ TotalWorkingYears       : num [1:1470] 8 10 7 8 6 8 12 1 10 17 ...
+ $ TrainingTimesLastYear   : num [1:1470] 0 3 3 3 3 2 3 2 2 3 ...
+ $ WorkLifeBalance         : num [1:1470] 1 3 3 3 3 2 2 3 3 2 ...
+ $ YearsAtCompany          : num [1:1470] 6 10 0 8 2 7 1 1 9 7 ...
+ $ YearsInCurrentRole      : num [1:1470] 4 7 0 7 2 7 0 0 7 7 ...
+ $ YearsSinceLastPromotion : num [1:1470] 0 1 0 3 2 3 0 0 1 7 ...
+ $ YearsWithCurrManager    : num [1:1470] 5 7 0 0 2 6 0 0 8 7 ...
+> 
+> # See number of rows and columns
+> dim(data)
+[1] 1470   35
+> 
+> # Summary of numeric columns
+> summary(data)
+      Age         Attrition         BusinessTravel       DailyRate       Department        DistanceFromHome   Education     EducationField    
+ Min.   :18.00   Length:1470        Length:1470        Min.   : 102.0   Length:1470        Min.   : 1.000   Min.   :1.000   Length:1470       
+ 1st Qu.:30.00   Class :character   Class :character   1st Qu.: 465.0   Class :character   1st Qu.: 2.000   1st Qu.:2.000   Class :character  
+ Median :36.00   Mode  :character   Mode  :character   Median : 802.0   Mode  :character   Median : 7.000   Median :3.000   Mode  :character  
+ Mean   :36.92                                         Mean   : 802.5                      Mean   : 9.193   Mean   :2.913                     
+ 3rd Qu.:43.00                                         3rd Qu.:1157.0                      3rd Qu.:14.000   3rd Qu.:4.000                     
+ Max.   :60.00                                         Max.   :1499.0                      Max.   :29.000   Max.   :5.000                     
+ EmployeeCount EmployeeNumber   EnvironmentSatisfaction    Gender            HourlyRate     JobInvolvement    JobLevel       JobRole         
+ Min.   :1     Min.   :   1.0   Min.   :1.000           Length:1470        Min.   : 30.00   Min.   :1.00   Min.   :1.000   Length:1470       
+ 1st Qu.:1     1st Qu.: 491.2   1st Qu.:2.000           Class :character   1st Qu.: 48.00   1st Qu.:2.00   1st Qu.:1.000   Class :character  
+ Median :1     Median :1020.5   Median :3.000           Mode  :character   Median : 66.00   Median :3.00   Median :2.000   Mode  :character  
+ Mean   :1     Mean   :1024.9   Mean   :2.722                              Mean   : 65.89   Mean   :2.73   Mean   :2.064                     
+ 3rd Qu.:1     3rd Qu.:1555.8   3rd Qu.:4.000                              3rd Qu.: 83.75   3rd Qu.:3.00   3rd Qu.:3.000                     
+ Max.   :1     Max.   :2068.0   Max.   :4.000                              Max.   :100.00   Max.   :4.00   Max.   :5.000                     
+ JobSatisfaction MaritalStatus      MonthlyIncome    MonthlyRate    NumCompaniesWorked    Over18            OverTime         PercentSalaryHike
+ Min.   :1.000   Length:1470        Min.   : 1009   Min.   : 2094   Min.   :0.000      Length:1470        Length:1470        Min.   :11.00    
+ 1st Qu.:2.000   Class :character   1st Qu.: 2911   1st Qu.: 8047   1st Qu.:1.000      Class :character   Class :character   1st Qu.:12.00    
+ Median :3.000   Mode  :character   Median : 4919   Median :14236   Median :2.000      Mode  :character   Mode  :character   Median :14.00    
+ Mean   :2.729                      Mean   : 6503   Mean   :14313   Mean   :2.693                                            Mean   :15.21    
+ 3rd Qu.:4.000                      3rd Qu.: 8379   3rd Qu.:20462   3rd Qu.:4.000                                            3rd Qu.:18.00    
+ Max.   :4.000                      Max.   :19999   Max.   :26999   Max.   :9.000                                            Max.   :25.00    
+ PerformanceRating RelationshipSatisfaction StandardHours StockOptionLevel TotalWorkingYears TrainingTimesLastYear WorkLifeBalance YearsAtCompany  
+ Min.   :3.000     Min.   :1.000            Min.   :80    Min.   :0.0000   Min.   : 0.00     Min.   :0.000         Min.   :1.000   Min.   : 0.000  
+ 1st Qu.:3.000     1st Qu.:2.000            1st Qu.:80    1st Qu.:0.0000   1st Qu.: 6.00     1st Qu.:2.000         1st Qu.:2.000   1st Qu.: 3.000  
+ Median :3.000     Median :3.000            Median :80    Median :1.0000   Median :10.00     Median :3.000         Median :3.000   Median : 5.000  
+ Mean   :3.154     Mean   :2.712            Mean   :80    Mean   :0.7939   Mean   :11.28     Mean   :2.799         Mean   :2.761   Mean   : 7.008  
+ 3rd Qu.:3.000     3rd Qu.:4.000            3rd Qu.:80    3rd Qu.:1.0000   3rd Qu.:15.00     3rd Qu.:3.000         3rd Qu.:3.000   3rd Qu.: 9.000  
+ Max.   :4.000     Max.   :4.000            Max.   :80    Max.   :3.0000   Max.   :40.00     Max.   :6.000         Max.   :4.000   Max.   :40.000  
+ YearsInCurrentRole YearsSinceLastPromotion YearsWithCurrManager
+ Min.   : 0.000     Min.   : 0.000          Min.   : 0.000      
+ 1st Qu.: 2.000     1st Qu.: 0.000          1st Qu.: 2.000      
+ Median : 3.000     Median : 1.000          Median : 3.000      
+ Mean   : 4.229     Mean   : 2.188          Mean   : 4.123      
+ 3rd Qu.: 7.000     3rd Qu.: 3.000          3rd Qu.: 7.000      
+ Max.   :18.000     Max.   :15.000          Max.   :17.000      
+> 
+> # Frequency of Attrition
+> table(data$Attrition)
+
+  No  Yes 
+1233  237 
+> 
+> # Attrition by Gender
+> table(data$Gender, data$Attrition)
+        
+          No Yes
+  Female 501  87
+  Male   732 150
+> prop.table(table(data$Gender, data$Attrition), 1) * 100
+        
+               No      Yes
+  Female 85.20408 14.79592
+  Male   82.99320 17.00680
+> install.packages("ggplot2")
+Warning: package ‘ggplot2’ is in use and will not be installed
+> library(ggplot2)
+> 
+> # Attrition count
+> ggplot(data, aes(x = Attrition, fill = Attrition)) +
++   geom_bar() +
++   labs(title = "Attrition Distribution")
+> 
+> # Attrition by Department
+> ggplot(data, aes(x = Department, fill = Attrition)) +
++   geom_bar(position = "fill") +
++   coord_flip() +
++   labs(title = "Attrition by Department", y = "Proportion")
+> 
+> # Attrition by Job Role
+> ggplot(data, aes(x = JobRole, fill = Attrition)) +
++   geom_bar(position = "fill") +
++   coord_flip() +
++   labs(title = "Attrition by Job Role", y = "Proportion")
+Error in UseMethod("depth") : 
+  no applicable method for 'depth' applied to an object of class "NULL"
+Error in UseMethod("depth") : 
+  no applicable method for 'depth' applied to an object of class "NULL"
+Error in UseMethod("depth") : 
+  no applicable method for 'depth' applied to an object of class "NULL"
+Error in UseMethod("depth") : 
+  no applicable method for 'depth' applied to an object of class "NULL"
+> > > > > 
+> 
+> install.packages("ggplot2")
+Warning: package ‘ggplot2’ is in use and will not be installed
+> library(ggplot2)
+> 
+> # Attrition count
+> ggplot(data, aes(x = Attrition, fill = Attrition)) +
++   geom_bar() +
++   labs(title = "Attrition Distribution")
+> 
+> # Attrition by Department
+> ggplot(data, aes(x = Department, fill = Attrition)) +
++   geom_bar(position = "fill") +
++   coord_flip() +
++   labs(title = "Attrition by Department", y = "Proportion")
+> 
+> ggplot(data, aes(x = JobRole, fill = Attrition)) +
++   geom_bar(position = "fill") +
++   coord_flip() +
++   labs(title = "Attrition by Job Role", y = "Proportion")
+> 
+> install.packages("ggplot2")
+Warning: package ‘ggplot2’ is in use and will not be installed
+> library(ggplot2)
+> 
+> # Attrition count
+> ggplot(data, aes(x = Attrition, fill = Attrition)) +
++   geom_bar() +
++   labs(title = "Attrition Distribution")
+> 
+> # Attrition by Department
+> ggplot(data, aes(x = Department, fill = Attrition)) +
++   geom_bar(position = "fill") +
++   coord_flip() +
++   labs(title = "Attrition by Department", y = "Proportion")
+> 
+> # Attrition by Job Role
+> ggplot(data, aes(x = JobRole, fill = Attrition)) +
++   geom_bar(position = "fill") +
++   coord_flip() +
++   labs(title = "Attrition by Job Role", y = "Proportion")
+> library(ggplot2)
+> 
+> ggplot(data, aes(x = Department, fill = Attrition)) +
++   geom_bar(position = "fill") +                  # shows proportion instead of count
++   coord_flip() +                                 # horizontal bars for readability
++   scale_y_continuous(labels = scales::percent) + # converts to percentage format
++   labs(
++     title = "Attrition by Department",
++     x = "Department",
++     y = "Percentage of Employees"
++   ) +
++   theme_minimal() +
++   theme(
++     legend.title = element_blank(),
++     plot.title = element_text(face = "bold", size = 14),
++     axis.text.y = element_text(size = 10)
++   )
+> 
+> # --- Setup & cleanup (safe to run) ---
+> library(ggplot2)
+> 
+> # Trim stray spaces from column names
+> names(data) <- trimws(names(data))
+> 
+> # Ensure the three columns exist (will print any that are missing)
+> setdiff(c("Attrition","Department","JobRole"), names(data))
+character(0)
+> 
+> # Coerce to factors and trim string spaces
+> to_factor_trim <- function(x) factor(trimws(as.character(x)))
+> data$Attrition  <- to_factor_trim(data$Attrition)
+> data$Department <- to_factor_trim(data$Department)
+> data$JobRole    <- to_factor_trim(data$JobRole)
+> 
+> # Helper for % axis labels (avoids needing the 'scales' package)
+> pct <- function(x) paste0(round(x * 100), "%")
+> 
+> # --- Plot: Attrition by Department (proportions) ---
+> ggplot(na.omit(data[, c("Department","Attrition")]),
++        aes(x = Department, fill = Attrition)) +
++   geom_bar(position = "fill") +
++   coord_flip() +
++   scale_y_continuous(labels = pct) +
++   labs(title = "Attrition by Department",
++        x = "Department", y = "Percentage of Employees") +
++   theme_minimal(base_size = 12) +
++   theme(legend.title = element_blank(),
++         plot.title = element_text(face = "bold"))
+> 
+> # --- Plot: Attrition by Job Role (proportions) ---
+> ggplot(na.omit(data[, c("JobRole","Attrition")]),
++        aes(x = JobRole, fill = Attrition)) +
++   geom_bar(position = "fill") +
++   coord_flip() +
++   scale_y_continuous(labels = pct) +
++   labs(title = "Attrition by Job Role",
++        x = "Job Role", y = "Percentage of Employees") +
++   theme_minimal(base_size = 12) +
++   theme(legend.title = element_blank(),
++         plot.title = element_text(face = "bold"))
+> 
+> # Do the columns exist exactly with these names?
+> names(data)
+ [1] "Age"                      "Attrition"               
+ [3] "BusinessTravel"           "DailyRate"               
+ [5] "Department"               "DistanceFromHome"        
+ [7] "Education"                "EducationField"          
+ [9] "EmployeeCount"            "EmployeeNumber"          
+[11] "EnvironmentSatisfaction"  "Gender"                  
+[13] "HourlyRate"               "JobInvolvement"          
+[15] "JobLevel"                 "JobRole"                 
+[17] "JobSatisfaction"          "MaritalStatus"           
+[19] "MonthlyIncome"            "MonthlyRate"             
+[21] "NumCompaniesWorked"       "Over18"                  
+[23] "OverTime"                 "PercentSalaryHike"       
+[25] "PerformanceRating"        "RelationshipSatisfaction"
+[27] "StandardHours"            "StockOptionLevel"        
+[29] "TotalWorkingYears"        "TrainingTimesLastYear"   
+[31] "WorkLifeBalance"          "YearsAtCompany"          
+[33] "YearsInCurrentRole"       "YearsSinceLastPromotion" 
+[35] "YearsWithCurrManager"    
+> 
+> # Are there unexpected leading/trailing spaces in values?
+> head(data$Department); head(data$JobRole); head(data$Attrition)
+[1] Sales                  Research & Development Research & Development
+[4] Research & Development Research & Development Research & Development
+Levels: Human Resources Research & Development Sales
+[1] Sales Executive       Research Scientist    Laboratory Technician
+[4] Research Scientist    Laboratory Technician Laboratory Technician
+9 Levels: Healthcare Representative ... Sales Representative
+[1] Yes No  Yes No  No  No 
+Levels: No Yes
+> 
+> # What are the unique values of Attrition?
+> unique(data$Attrition)
+[1] Yes No 
+Levels: No Yes
+> 
+> # Basic checks
+> dim(data); str(data); summary(data)
+[1] 1470   35
+tibble [1,470 × 35] (S3: tbl_df/tbl/data.frame)
+ $ Age                     : num [1:1470] 41 49 37 33 27 32 59 30 38 36 ...
+ $ Attrition               : Factor w/ 2 levels "No","Yes": 2 1 2 1 1 1 1 1 1 1 ...
+ $ BusinessTravel          : chr [1:1470] "Travel_Rarely" "Travel_Frequently" "Travel_Rarely" "Travel_Frequently" ...
+ $ DailyRate               : num [1:1470] 1102 279 1373 1392 591 ...
+ $ Department              : Factor w/ 3 levels "Human Resources",..: 3 2 2 2 2 2 2 2 2 2 ...
+ $ DistanceFromHome        : num [1:1470] 1 8 2 3 2 2 3 24 23 27 ...
+ $ Education               : num [1:1470] 2 1 2 4 1 2 3 1 3 3 ...
+ $ EducationField          : chr [1:1470] "Life Sciences" "Life Sciences" "Other" "Life Sciences" ...
+ $ EmployeeCount           : num [1:1470] 1 1 1 1 1 1 1 1 1 1 ...
+ $ EmployeeNumber          : num [1:1470] 1 2 4 5 7 8 10 11 12 13 ...
+ $ EnvironmentSatisfaction : num [1:1470] 2 3 4 4 1 4 3 4 4 3 ...
+ $ Gender                  : chr [1:1470] "Female" "Male" "Male" "Female" ...
+ $ HourlyRate              : num [1:1470] 94 61 92 56 40 79 81 67 44 94 ...
+ $ JobInvolvement          : num [1:1470] 3 2 2 3 3 3 4 3 2 3 ...
+ $ JobLevel                : num [1:1470] 2 2 1 1 1 1 1 1 3 2 ...
+ $ JobRole                 : Factor w/ 9 levels "Healthcare Representative",..: 8 7 3 7 3 3 3 3 5 1 ...
+ $ JobSatisfaction         : num [1:1470] 4 2 3 3 2 4 1 3 3 3 ...
+ $ MaritalStatus           : chr [1:1470] "Single" "Married" "Single" "Married" ...
+ $ MonthlyIncome           : num [1:1470] 5993 5130 2090 2909 3468 ...
+ $ MonthlyRate             : num [1:1470] 19479 24907 2396 23159 16632 ...
+ $ NumCompaniesWorked      : num [1:1470] 8 1 6 1 9 0 4 1 0 6 ...
+ $ Over18                  : chr [1:1470] "Y" "Y" "Y" "Y" ...
+ $ OverTime                : chr [1:1470] "Yes" "No" "Yes" "Yes" ...
+ $ PercentSalaryHike       : num [1:1470] 11 23 15 11 12 13 20 22 21 13 ...
+ $ PerformanceRating       : num [1:1470] 3 4 3 3 3 3 4 4 4 3 ...
+ $ RelationshipSatisfaction: num [1:1470] 1 4 2 3 4 3 1 2 2 2 ...
+ $ StandardHours           : num [1:1470] 80 80 80 80 80 80 80 80 80 80 ...
+ $ StockOptionLevel        : num [1:1470] 0 1 0 0 1 0 3 1 0 2 ...
+ $ TotalWorkingYears       : num [1:1470] 8 10 7 8 6 8 12 1 10 17 ...
+ $ TrainingTimesLastYear   : num [1:1470] 0 3 3 3 3 2 3 2 2 3 ...
+ $ WorkLifeBalance         : num [1:1470] 1 3 3 3 3 2 2 3 3 2 ...
+ $ YearsAtCompany          : num [1:1470] 6 10 0 8 2 7 1 1 9 7 ...
+ $ YearsInCurrentRole      : num [1:1470] 4 7 0 7 2 7 0 0 7 7 ...
+ $ YearsSinceLastPromotion : num [1:1470] 0 1 0 3 2 3 0 0 1 7 ...
+ $ YearsWithCurrManager    : num [1:1470] 5 7 0 0 2 6 0 0 8 7 ...
+      Age        Attrition  BusinessTravel       DailyRate     
+ Min.   :18.00   No :1233   Length:1470        Min.   : 102.0  
+ 1st Qu.:30.00   Yes: 237   Class :character   1st Qu.: 465.0  
+ Median :36.00              Mode  :character   Median : 802.0  
+ Mean   :36.92                                 Mean   : 802.5  
+ 3rd Qu.:43.00                                 3rd Qu.:1157.0  
+ Max.   :60.00                                 Max.   :1499.0  
+                                                               
+                  Department  DistanceFromHome   Education    
+ Human Resources       : 63   Min.   : 1.000   Min.   :1.000  
+ Research & Development:961   1st Qu.: 2.000   1st Qu.:2.000  
+ Sales                 :446   Median : 7.000   Median :3.000  
+                              Mean   : 9.193   Mean   :2.913  
+                              3rd Qu.:14.000   3rd Qu.:4.000  
+                              Max.   :29.000   Max.   :5.000  
+                                                              
+ EducationField     EmployeeCount EmployeeNumber   EnvironmentSatisfaction
+ Length:1470        Min.   :1     Min.   :   1.0   Min.   :1.000          
+ Class :character   1st Qu.:1     1st Qu.: 491.2   1st Qu.:2.000          
+ Mode  :character   Median :1     Median :1020.5   Median :3.000          
+                    Mean   :1     Mean   :1024.9   Mean   :2.722          
+                    3rd Qu.:1     3rd Qu.:1555.8   3rd Qu.:4.000          
+                    Max.   :1     Max.   :2068.0   Max.   :4.000          
+                                                                          
+    Gender            HourlyRate     JobInvolvement    JobLevel    
+ Length:1470        Min.   : 30.00   Min.   :1.00   Min.   :1.000  
+ Class :character   1st Qu.: 48.00   1st Qu.:2.00   1st Qu.:1.000  
+ Mode  :character   Median : 66.00   Median :3.00   Median :2.000  
+                    Mean   : 65.89   Mean   :2.73   Mean   :2.064  
+                    3rd Qu.: 83.75   3rd Qu.:3.00   3rd Qu.:3.000  
+                    Max.   :100.00   Max.   :4.00   Max.   :5.000  
+                                                                   
+                      JobRole    JobSatisfaction MaritalStatus     
+ Sales Executive          :326   Min.   :1.000   Length:1470       
+ Research Scientist       :292   1st Qu.:2.000   Class :character  
+ Laboratory Technician    :259   Median :3.000   Mode  :character  
+ Manufacturing Director   :145   Mean   :2.729                     
+ Healthcare Representative:131   3rd Qu.:4.000                     
+ Manager                  :102   Max.   :4.000                     
+ (Other)                  :215                                     
+ MonthlyIncome    MonthlyRate    NumCompaniesWorked    Over18         
+ Min.   : 1009   Min.   : 2094   Min.   :0.000      Length:1470       
+ 1st Qu.: 2911   1st Qu.: 8047   1st Qu.:1.000      Class :character  
+ Median : 4919   Median :14236   Median :2.000      Mode  :character  
+ Mean   : 6503   Mean   :14313   Mean   :2.693                        
+ 3rd Qu.: 8379   3rd Qu.:20462   3rd Qu.:4.000                        
+ Max.   :19999   Max.   :26999   Max.   :9.000                        
+                                                                      
+   OverTime         PercentSalaryHike PerformanceRating
+ Length:1470        Min.   :11.00     Min.   :3.000    
+ Class :character   1st Qu.:12.00     1st Qu.:3.000    
+ Mode  :character   Median :14.00     Median :3.000    
+                    Mean   :15.21     Mean   :3.154    
+                    3rd Qu.:18.00     3rd Qu.:3.000    
+                    Max.   :25.00     Max.   :4.000    
+                                                       
+ RelationshipSatisfaction StandardHours StockOptionLevel TotalWorkingYears
+ Min.   :1.000            Min.   :80    Min.   :0.0000   Min.   : 0.00    
+ 1st Qu.:2.000            1st Qu.:80    1st Qu.:0.0000   1st Qu.: 6.00    
+ Median :3.000            Median :80    Median :1.0000   Median :10.00    
+ Mean   :2.712            Mean   :80    Mean   :0.7939   Mean   :11.28    
+ 3rd Qu.:4.000            3rd Qu.:80    3rd Qu.:1.0000   3rd Qu.:15.00    
+ Max.   :4.000            Max.   :80    Max.   :3.0000   Max.   :40.00    
+                                                                          
+ TrainingTimesLastYear WorkLifeBalance YearsAtCompany   YearsInCurrentRole
+ Min.   :0.000         Min.   :1.000   Min.   : 0.000   Min.   : 0.000    
+ 1st Qu.:2.000         1st Qu.:2.000   1st Qu.: 3.000   1st Qu.: 2.000    
+ Median :3.000         Median :3.000   Median : 5.000   Median : 3.000    
+ Mean   :2.799         Mean   :2.761   Mean   : 7.008   Mean   : 4.229    
+ 3rd Qu.:3.000         3rd Qu.:3.000   3rd Qu.: 9.000   3rd Qu.: 7.000    
+ Max.   :6.000         Max.   :4.000   Max.   :40.000   Max.   :18.000    
+                                                                          
+ YearsSinceLastPromotion YearsWithCurrManager
+ Min.   : 0.000          Min.   : 0.000      
+ 1st Qu.: 0.000          1st Qu.: 2.000      
+ Median : 1.000          Median : 3.000      
+ Mean   : 2.188          Mean   : 4.123      
+ 3rd Qu.: 3.000          3rd Qu.: 7.000      
+ Max.   :15.000          Max.   :17.000      
+                                             
+> 
+> # Attrition rate
+> table(data$Attrition)
+
+  No  Yes 
+1233  237 
+> prop.table(table(data$Attrition)) * 100
+
+      No      Yes 
+83.87755 16.12245 
+> 
+> # Helper to compute attrition % by any categorical column
+> attrition_rate_by <- function(df, col) {
++   cn <- deparse(substitute(col))
++   agg <- aggregate(I(Attrition == "Yes") ~ get(cn), df, mean, na.action = na.omit)
++   names(agg) <- c(cn, "attrition_rate")
++   agg[order(-agg$attrition_rate), ]
++ }
+> 
+> # Examples
+> attrition_rate_by(data, Department)
+              Department attrition_rate
+3                  Sales      0.2062780
+1        Human Resources      0.1904762
+2 Research & Development      0.1383975
+> attrition_rate_by(data, JobRole)
+                    JobRole attrition_rate
+9      Sales Representative     0.39759036
+3     Laboratory Technician     0.23938224
+2           Human Resources     0.23076923
+8           Sales Executive     0.17484663
+7        Research Scientist     0.16095890
+5    Manufacturing Director     0.06896552
+1 Healthcare Representative     0.06870229
+4                   Manager     0.04901961
+6         Research Director     0.02500000
+> attrition_rate_by(data, MaritalStatus)
+  MaritalStatus attrition_rate
+3        Single      0.2553191
+2       Married      0.1248143
+1      Divorced      0.1009174
+> 
+> library(ggplot2)
+> 
+> ggplot(data, aes(x = Department, fill = Attrition)) +
++   geom_bar() +
++   coord_flip() +
++   labs(
++     title = "Attrition by Department",
++     x = "Department",
++     y = "Number of Employees"
++   ) +
++   theme_minimal() +
++   theme(
++     plot.title = element_text(size = 14, face = "bold"),
++     axis.text.y = element_text(size = 10),
++     legend.title = element_blank()
++   )
+> 
+> ```{r, echo=TRUE}
+Error: attempt to use zero-length variable name
+> ggplot(data, aes(x = Department, fill = Attrition)) +
++   geom_bar()
+> 
+> ggplot(data, aes(x = JobRole, fill = Attrition)) +
++   geom_bar() +
++   coord_flip() +
++   labs(
++     title = "Attrition by Job Role",
++     x = "Job Role",
++     y = "Number of Employees"
++   ) +
++   theme_minimal() +
++   theme(
++     plot.title = element_text(size = 14, face = "bold"),
++     axis.text.y = element_text(size = 9),
++     legend.title = element_blank()
++   )
+> library(ggplot2)
+> library(dplyr)
+Error in library(dplyr) : there is no package called ‘dplyr’
+> 
+> # Marriott colors
+> marriott_colors <- c("No" = "#000000", "Yes" = "#E57200")  # black, orange
+> 
+> # Recode if Attrition isn’t exactly “Yes”/“No”
+> data$Attrition <- factor(trimws(data$Attrition))
+> 
+> install.packages(c("dplyr", "ggplot2"))
+Warning: package ‘ggplot2’ is in use and will not be installed
+Installing package into ‘C:/Users/palak/AppData/Local/R/win-library/4.5’
+(as ‘lib’ is unspecified)
+also installing the dependencies ‘generics’, ‘tidyselect’
+
+trying URL 'https://mirrors.nics.utk.edu/cran/bin/windows/contrib/4.5/generics_0.1.4.zip'
+trying URL 'https://mirrors.nics.utk.edu/cran/bin/windows/contrib/4.5/tidyselect_1.2.1.zip'
+trying URL 'https://mirrors.nics.utk.edu/cran/bin/windows/contrib/4.5/dplyr_1.1.4.zip'
+package ‘generics’ successfully unpacked and MD5 sums checked
+package ‘tidyselect’ successfully unpacked and MD5 sums checked
+package ‘dplyr’ successfully unpacked and MD5 sums checked
+
+The downloaded binary packages are in
+        C:\Users\palak\AppData\Local\Temp\RtmpO6iQs1\downloaded_packages
+> 
+> library(dplyr)
+
+Attaching package: ‘dplyr’
+
+The following object is masked from ‘package:ggplot2’:
+
+    vars
+
+The following objects are masked from ‘package:stats’:
+
+    filter, lag
+
+The following objects are masked from ‘package:base’:
+
+    intersect, setdiff, setequal, union
+
+> library(ggplot2)
+> # Define Marriott brand colors (black and orange)
+> marriott_colors <- c("No" = "#000000", "Yes" = "#E57200")
+> 
+> # Ensure Attrition column is formatted correctly
+> data$Attrition <- factor(trimws(data$Attrition))
+> 
+> # Summarize counts by Department and Attrition
+> dept_counts <- data %>%
++   group_by(Department, Attrition) %>%
++   summarise(Count = n(), .groups = "drop")
+> 
+> # Create the labeled bar chart
+> ggplot(dept_counts, aes(x = Department, y = Count, fill = Attrition)) +
++   geom_bar(stat = "identity", position = position_dodge(width = 0.9)) +
++   geom_text(aes(label = Count),
++             position = position_dodge(width = 0.9),
++             vjust = -0.3, size = 3.5, color = "black") +
++   scale_fill_manual(values = marriott_colors) +
++   labs(
++     title = "Attrition by Department",
++     x = "Department",
++     y = "Number of Employees"
++   ) +
++   theme_minimal(base_size = 12) +
++   theme(
++     plot.title = element_text(size = 14, face = "bold"),
++     legend.title = element_blank(),
++     axis.text.x = element_text(angle = 25, hjust = 1)
++   )
+> # Summarize counts by Department and Attrition
+> dept_counts <- data %>%
++   group_by(Department, Attrition) %>%
++   summarise(Count = n(), .groups = "drop")
+> 
+> # Create the labeled bar chart
+> ggplot(dept_counts, aes(x = Department, y = Count, fill = Attrition)) +
++   geom_bar(stat = "identity", position = position_dodge(width = 0.9)) +
++   geom_text(aes(label = Count),
++             position = position_dodge(width = 0.9),
++             vjust = -0.3, size = 3.5, color = "black") +
++   scale_fill_manual(values = marriott_colors) +
++   labs(
++     title = "Attrition by Department",
++     x = "Department",
++     y = "Number of Employees"
++   ) +
++   theme_minimal(base_size = 12) +
++   theme(
++     plot.title = element_text(size = 14, face = "bold"),
++     legend.title = element_blank(),
++     axis.text.x = element_text(angle = 25, hjust = 1)
++   )
+> library(dplyr)
+> library(ggplot2)
+> 
+> # Marriott colors
+> marriott_colors <- c("No" = "#000000", "Yes" = "#E57200")
+> 
+> # Ensure Attrition is cleanly formatted
+> data$Attrition <- factor(trimws(data$Attrition))
+> 
+> # Summarize counts by Department
+> dept_counts <- data %>%
++   group_by(Department, Attrition) %>%
++   summarise(Count = n(), .groups = "drop")
+> 
+> # Bar chart
+> ggplot(dept_counts, aes(x = Department, y = Count, fill = Attrition)) +
++   geom_bar(stat = "identity", position = position_dodge(width = 0.9)) +
++   geom_text(aes(label = Count),
++             position = position_dodge(width = 0.9),
++             vjust = -0.3, size = 3.5, color = "black") +
++   scale_fill_manual(values = marriott_colors) +
++   labs(
++     title = "Attrition by Department",
++     x = "Department",
++     y = "Number of Employees"
++   ) +
++   theme_minimal(base_size = 12) +
++   theme(
++     plot.title = element_text(size = 14, face = "bold"),
++     legend.title = element_blank(),
++     axis.text.x = element_text(angle = 0, hjust = 0.5),  # make labels horizontal
++     panel.grid.major = element_blank(),
++     panel.grid.minor = element_blank(),
++     panel.border = element_blank()
++   )
+> # Summarize counts by Job Role
+> job_counts <- data %>%
++   group_by(JobRole, Attrition) %>%
++   summarise(Count = n(), .groups = "drop")
+> 
+> # Bar chart
+> ggplot(job_counts, aes(x = JobRole, y = Count, fill = Attrition)) +
++   geom_bar(stat = "identity", position = position_dodge(width = 0.9)) +
++   geom_text(aes(label = Count),
++             position = position_dodge(width = 0.9),
++             vjust = -0.3, size = 3.5, color = "black") +
++   scale_fill_manual(values = marriott_colors) +
++   labs(
++     title = "Attrition by Job Role",
++     x = "Job Role",
++     y = "Number of Employees"
++   ) +
++   theme_minimal(base_size = 12) +
++   theme(
++     plot.title = element_text(size = 14, face = "bold"),
++     legend.title = element_blank(),
++     axis.text.x = element_text(angle = 0, hjust = 0.5),  # horizontal x-axis titles
++     panel.grid.major = element_blank(),
++     panel.grid.minor = element_blank(),
++     panel.border = element_blank()
++   )
+> library(dplyr)
+> library(ggplot2)
+> 
+> # Marriott colors
+> marriott_colors <- c("No" = "#000000", "Yes" = "#E57200")
+> 
+> # Clean Attrition variable
+> data$Attrition <- factor(trimws(data$Attrition))
+> 
+> # Summarize counts by Job Role and Attrition
+> job_counts <- data %>%
++   group_by(JobRole, Attrition) %>%
++   summarise(Count = n(), .groups = "drop")
+> 
+> # Compute order by number of "Yes" attrition cases
+> job_order <- job_counts %>%
++   filter(Attrition == "Yes") %>%
++   arrange(desc(Count)) %>%
++   pull(JobRole)
+> 
+> # Convert JobRole to ordered factor
+> job_counts$JobRole <- factor(job_counts$JobRole, levels = job_order)
+> 
+> # Plot (ordered by attrition)
+> ggplot(job_counts, aes(x = JobRole, y = Count, fill = Attrition)) +
++   geom_bar(stat = "identity", position = position_dodge(width = 0.9)) +
++   geom_text(aes(label = Count),
++             position = position_dodge(width = 0.9),
++             vjust = -0.3, size = 3.5, color = "black") +
++   scale_fill_manual(values = marriott_colors) +
++   labs(
++     title = "Attrition by Job Role (Ordered by Highest Attrition)",
++     x = "Job Role",
++     y = "Number of Employees"
++   ) +
++   theme_minimal(base_size = 12) +
++   theme(
++     plot.title = element_text(size = 14, face = "bold"),
++     legend.title = element_blank(),
++     axis.text.x = element_text(angle = 0, hjust = 0.5),
++     panel.grid.major = element_blank(),
++     panel.grid.minor = element_blank(),
++     panel.border = element_blank()
++   )
+> library(dplyr)
+> library(ggplot2)
+> 
+> # Marriott colors
+> marriott_colors <- c("No" = "#000000", "Yes" = "#E57200")
+> 
+> # Clean Attrition variable
+> data$Attrition <- factor(trimws(data$Attrition))
+> 
+> # Summarize counts
+> job_counts <- data %>%
++   group_by(JobRole, Attrition) %>%
++   summarise(Count = n(), .groups = "drop")
+> 
+> # Order by highest "Yes" attrition
+> job_order <- job_counts %>%
++   filter(Attrition == "Yes") %>%
++   arrange(desc(Count)) %>%
++   pull(JobRole)
+> 
+> job_counts$JobRole <- factor(job_counts$JobRole, levels = job_order)
+> 
+> # --- Plot (horizontal for readability) ---
+> ggplot(job_counts, aes(x = JobRole, y = Count, fill = Attrition)) +
++   geom_bar(stat = "identity", position = position_dodge(width = 0.9)) +
++   geom_text(aes(label = Count),
++             position = position_dodge(width = 0.9),
++             hjust = -0.1, size = 3.5, color = "black") +
++   scale_fill_manual(values = marriott_colors) +
++   coord_flip() +  # ← flips chart horizontally
++   labs(
++     title = "Attrition by Job Role (Ordered by Highest Attrition)",
++     x = "Job Role",
++     y = "Number of Employees"
++   ) +
++   theme_minimal(base_size = 12) +
++   theme(
++     plot.title = element_text(size = 14, face = "bold"),
++     legend.title = element_blank(),
++     panel.grid.major = element_blank(),
++     panel.grid.minor = element_blank(),
++     panel.border = element_blank(),
++     axis.text.y = element_text(size = 10)  # readable y-axis (job titles)
++   )
+> str(data)
+tibble [1,470 × 35] (S3: tbl_df/tbl/data.frame)
+ $ Age                     : num [1:1470] 41 49 37 33 27 32 59 30 38 36 ...
+ $ Attrition               : Factor w/ 2 levels "No","Yes": 2 1 2 1 1 1 1 1 1 1 ...
+ $ BusinessTravel          : chr [1:1470] "Travel_Rarely" "Travel_Frequently" "Travel_Rarely" "Travel_Frequently" ...
+ $ DailyRate               : num [1:1470] 1102 279 1373 1392 591 ...
+ $ Department              : Factor w/ 3 levels "Human Resources",..: 3 2 2 2 2 2 2 2 2 2 ...
+ $ DistanceFromHome        : num [1:1470] 1 8 2 3 2 2 3 24 23 27 ...
+ $ Education               : num [1:1470] 2 1 2 4 1 2 3 1 3 3 ...
+ $ EducationField          : chr [1:1470] "Life Sciences" "Life Sciences" "Other" "Life Sciences" ...
+ $ EmployeeCount           : num [1:1470] 1 1 1 1 1 1 1 1 1 1 ...
+ $ EmployeeNumber          : num [1:1470] 1 2 4 5 7 8 10 11 12 13 ...
+ $ EnvironmentSatisfaction : num [1:1470] 2 3 4 4 1 4 3 4 4 3 ...
+ $ Gender                  : chr [1:1470] "Female" "Male" "Male" "Female" ...
+ $ HourlyRate              : num [1:1470] 94 61 92 56 40 79 81 67 44 94 ...
+ $ JobInvolvement          : num [1:1470] 3 2 2 3 3 3 4 3 2 3 ...
+ $ JobLevel                : num [1:1470] 2 2 1 1 1 1 1 1 3 2 ...
+ $ JobRole                 : Factor w/ 9 levels "Healthcare Representative",..: 8 7 3 7 3 3 3 3 5 1 ...
+ $ JobSatisfaction         : num [1:1470] 4 2 3 3 2 4 1 3 3 3 ...
+ $ MaritalStatus           : chr [1:1470] "Single" "Married" "Single" "Married" ...
+ $ MonthlyIncome           : num [1:1470] 5993 5130 2090 2909 3468 ...
+ $ MonthlyRate             : num [1:1470] 19479 24907 2396 23159 16632 ...
+ $ NumCompaniesWorked      : num [1:1470] 8 1 6 1 9 0 4 1 0 6 ...
+ $ Over18                  : chr [1:1470] "Y" "Y" "Y" "Y" ...
+ $ OverTime                : chr [1:1470] "Yes" "No" "Yes" "Yes" ...
+ $ PercentSalaryHike       : num [1:1470] 11 23 15 11 12 13 20 22 21 13 ...
+ $ PerformanceRating       : num [1:1470] 3 4 3 3 3 3 4 4 4 3 ...
+ $ RelationshipSatisfaction: num [1:1470] 1 4 2 3 4 3 1 2 2 2 ...
+ $ StandardHours           : num [1:1470] 80 80 80 80 80 80 80 80 80 80 ...
+ $ StockOptionLevel        : num [1:1470] 0 1 0 0 1 0 3 1 0 2 ...
+ $ TotalWorkingYears       : num [1:1470] 8 10 7 8 6 8 12 1 10 17 ...
+ $ TrainingTimesLastYear   : num [1:1470] 0 3 3 3 3 2 3 2 2 3 ...
+ $ WorkLifeBalance         : num [1:1470] 1 3 3 3 3 2 2 3 3 2 ...
+ $ YearsAtCompany          : num [1:1470] 6 10 0 8 2 7 1 1 9 7 ...
+ $ YearsInCurrentRole      : num [1:1470] 4 7 0 7 2 7 0 0 7 7 ...
+ $ YearsSinceLastPromotion : num [1:1470] 0 1 0 3 2 3 0 0 1 7 ...
+ $ YearsWithCurrManager    : num [1:1470] 5 7 0 0 2 6 0 0 8 7 ...
+> summary(data)
+      Age        Attrition  BusinessTravel       DailyRate     
+ Min.   :18.00   No :1233   Length:1470        Min.   : 102.0  
+ 1st Qu.:30.00   Yes: 237   Class :character   1st Qu.: 465.0  
+ Median :36.00              Mode  :character   Median : 802.0  
+ Mean   :36.92                                 Mean   : 802.5  
+ 3rd Qu.:43.00                                 3rd Qu.:1157.0  
+ Max.   :60.00                                 Max.   :1499.0  
+                                                               
+                  Department  DistanceFromHome   Education    
+ Human Resources       : 63   Min.   : 1.000   Min.   :1.000  
+ Research & Development:961   1st Qu.: 2.000   1st Qu.:2.000  
+ Sales                 :446   Median : 7.000   Median :3.000  
+                              Mean   : 9.193   Mean   :2.913  
+                              3rd Qu.:14.000   3rd Qu.:4.000  
+                              Max.   :29.000   Max.   :5.000  
+                                                              
+ EducationField     EmployeeCount EmployeeNumber   EnvironmentSatisfaction
+ Length:1470        Min.   :1     Min.   :   1.0   Min.   :1.000          
+ Class :character   1st Qu.:1     1st Qu.: 491.2   1st Qu.:2.000          
+ Mode  :character   Median :1     Median :1020.5   Median :3.000          
+                    Mean   :1     Mean   :1024.9   Mean   :2.722          
+                    3rd Qu.:1     3rd Qu.:1555.8   3rd Qu.:4.000          
+                    Max.   :1     Max.   :2068.0   Max.   :4.000          
+                                                                          
+    Gender            HourlyRate     JobInvolvement    JobLevel    
+ Length:1470        Min.   : 30.00   Min.   :1.00   Min.   :1.000  
+ Class :character   1st Qu.: 48.00   1st Qu.:2.00   1st Qu.:1.000  
+ Mode  :character   Median : 66.00   Median :3.00   Median :2.000  
+                    Mean   : 65.89   Mean   :2.73   Mean   :2.064  
+                    3rd Qu.: 83.75   3rd Qu.:3.00   3rd Qu.:3.000  
+                    Max.   :100.00   Max.   :4.00   Max.   :5.000  
+                                                                   
+                      JobRole    JobSatisfaction MaritalStatus     
+ Sales Executive          :326   Min.   :1.000   Length:1470       
+ Research Scientist       :292   1st Qu.:2.000   Class :character  
+ Laboratory Technician    :259   Median :3.000   Mode  :character  
+ Manufacturing Director   :145   Mean   :2.729                     
+ Healthcare Representative:131   3rd Qu.:4.000                     
+ Manager                  :102   Max.   :4.000                     
+ (Other)                  :215                                     
+ MonthlyIncome    MonthlyRate    NumCompaniesWorked    Over18         
+ Min.   : 1009   Min.   : 2094   Min.   :0.000      Length:1470       
+ 1st Qu.: 2911   1st Qu.: 8047   1st Qu.:1.000      Class :character  
+ Median : 4919   Median :14236   Median :2.000      Mode  :character  
+ Mean   : 6503   Mean   :14313   Mean   :2.693                        
+ 3rd Qu.: 8379   3rd Qu.:20462   3rd Qu.:4.000                        
+ Max.   :19999   Max.   :26999   Max.   :9.000                        
+                                                                      
+   OverTime         PercentSalaryHike PerformanceRating
+ Length:1470        Min.   :11.00     Min.   :3.000    
+ Class :character   1st Qu.:12.00     1st Qu.:3.000    
+ Mode  :character   Median :14.00     Median :3.000    
+                    Mean   :15.21     Mean   :3.154    
+                    3rd Qu.:18.00     3rd Qu.:3.000    
+                    Max.   :25.00     Max.   :4.000    
+                                                       
+ RelationshipSatisfaction StandardHours StockOptionLevel TotalWorkingYears
+ Min.   :1.000            Min.   :80    Min.   :0.0000   Min.   : 0.00    
+ 1st Qu.:2.000            1st Qu.:80    1st Qu.:0.0000   1st Qu.: 6.00    
+ Median :3.000            Median :80    Median :1.0000   Median :10.00    
+ Mean   :2.712            Mean   :80    Mean   :0.7939   Mean   :11.28    
+ 3rd Qu.:4.000            3rd Qu.:80    3rd Qu.:1.0000   3rd Qu.:15.00    
+ Max.   :4.000            Max.   :80    Max.   :3.0000   Max.   :40.00    
+                                                                          
+ TrainingTimesLastYear WorkLifeBalance YearsAtCompany   YearsInCurrentRole
+ Min.   :0.000         Min.   :1.000   Min.   : 0.000   Min.   : 0.000    
+ 1st Qu.:2.000         1st Qu.:2.000   1st Qu.: 3.000   1st Qu.: 2.000    
+ Median :3.000         Median :3.000   Median : 5.000   Median : 3.000    
+ Mean   :2.799         Mean   :2.761   Mean   : 7.008   Mean   : 4.229    
+ 3rd Qu.:3.000         3rd Qu.:3.000   3rd Qu.: 9.000   3rd Qu.: 7.000    
+ Max.   :6.000         Max.   :4.000   Max.   :40.000   Max.   :18.000    
+                                                                          
+ YearsSinceLastPromotion YearsWithCurrManager
+ Min.   : 0.000          Min.   : 0.000      
+ 1st Qu.: 0.000          1st Qu.: 2.000      
+ Median : 1.000          Median : 3.000      
+ Mean   : 2.188          Mean   : 4.123      
+ 3rd Qu.: 3.000          3rd Qu.: 7.000      
+ Max.   :15.000          Max.   :17.000      
+                                             
+> data$Attrition <- factor(data$Attrition, levels = c("No", "Yes"))
+> 
+> # Example: Categorical relationships
+> chisq.test(table(data$Attrition, data$Department))
+
+        Pearson's Chi-squared test
+
+data:  table(data$Attrition, data$Department)
+X-squared = 10.796, df = 2, p-value = 0.004526
+
+> chisq.test(table(data$Attrition, data$OverTime))
+
+        Pearson's Chi-squared test with Yates' continuity correction
+
+data:  table(data$Attrition, data$OverTime)
+X-squared = 87.564, df = 1, p-value < 2.2e-16
+
+> chisq.test(table(data$Attrition, data$Gender))
+
+        Pearson's Chi-squared test with Yates' continuity correction
+
+data:  table(data$Attrition, data$Gender)
+X-squared = 1.117, df = 1, p-value = 0.2906
+
+> chisq.test(table(data$Attrition, data$JobRole))
+
+        Pearson's Chi-squared test
+
+data:  table(data$Attrition, data$JobRole)
+X-squared = 86.19, df = 8, p-value = 2.752e-15
+
+> t.test(MonthlyIncome ~ Attrition, data = data)
+
+        Welch Two Sample t-test
+
+data:  MonthlyIncome by Attrition
+t = 7.4826, df = 412.74, p-value = 4.434e-13
+alternative hypothesis: true difference in means between group No and group Yes is not equal to 0
+95 percent confidence interval:
+ 1508.244 2583.050
+sample estimates:
+ mean in group No mean in group Yes 
+         6832.740          4787.093 
+
+> t.test(DistanceFromHome ~ Attrition, data = data)
+
+        Welch Two Sample t-test
+
+data:  DistanceFromHome by Attrition
+t = -2.8882, df = 322.72, p-value = 0.004137
+alternative hypothesis: true difference in means between group No and group Yes is not equal to 0
+95 percent confidence interval:
+ -2.8870025 -0.5475146
+sample estimates:
+ mean in group No mean in group Yes 
+         8.915653         10.632911 
+
+> t.test(YearsAtCompany ~ Attrition, data = data)
+
+        Welch Two Sample t-test
+
+data:  YearsAtCompany by Attrition
+t = 5.2826, df = 338.21, p-value = 2.286e-07
+alternative hypothesis: true difference in means between group No and group Yes is not equal to 0
+95 percent confidence interval:
+ 1.404805 3.071629
+sample estimates:
+ mean in group No mean in group Yes 
+         7.369019          5.130802 
+
+> t.test(Age ~ Attrition, data = data)
+
+        Welch Two Sample t-test
+
+data:  Age by Attrition
+t = 5.828, df = 316.93, p-value = 1.38e-08
+alternative hypothesis: true difference in means between group No and group Yes is not equal to 0
+95 percent confidence interval:
+ 2.618930 5.288346
+sample estimates:
+ mean in group No mean in group Yes 
+         37.56123          33.60759 
+
+> # Logistic regression model for attrition drivers
+> model <- glm(
++   Attrition ~ Age + MonthlyIncome + DistanceFromHome + YearsAtCompany +
++                OverTime + Department + JobRole,
++   data = data, family = binomial
++ )
+> 
+> summary(model)
+
+Call:
+glm(formula = Attrition ~ Age + MonthlyIncome + DistanceFromHome + 
+    YearsAtCompany + OverTime + Department + JobRole, family = binomial, 
+    data = data)
+
+Coefficients:
+                                   Estimate Std. Error z value Pr(>|z|)    
+(Intercept)                      -1.518e+01  4.065e+02  -0.037 0.970214    
+Age                              -3.241e-02  1.024e-02  -3.164 0.001554 ** 
+MonthlyIncome                     4.301e-05  4.679e-05   0.919 0.358001    
+DistanceFromHome                  2.958e-02  9.263e-03   3.193 0.001407 ** 
+YearsAtCompany                   -3.984e-02  1.879e-02  -2.120 0.033980 *  
+OverTimeYes                       1.498e+00  1.586e-01   9.442  < 2e-16 ***
+DepartmentResearch & Development  1.287e+01  4.065e+02   0.032 0.974748    
+DepartmentSales                   1.285e+01  4.065e+02   0.032 0.974784    
+JobRoleHuman Resources            1.439e+01  4.065e+02   0.035 0.971762    
+JobRoleLaboratory Technician      1.552e+00  4.266e-01   3.637 0.000276 ***
+JobRoleManager                   -1.210e-01  8.100e-01  -0.149 0.881299    
+JobRoleManufacturing Director     4.081e-04  4.887e-01   0.001 0.999334    
+JobRoleResearch Director         -1.177e+00  8.873e-01  -1.327 0.184561    
+JobRoleResearch Scientist         8.539e-01  4.313e-01   1.980 0.047718 *  
+JobRoleSales Executive            1.048e+00  1.039e+00   1.008 0.313230    
+JobRoleSales Representative       2.183e+00  1.078e+00   2.026 0.042816 *  
+---
+Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 1298.6  on 1469  degrees of freedom
+Residual deviance: 1091.7  on 1454  degrees of freedom
+AIC: 1123.7
+
+Number of Fisher Scoring iterations: 14
+
+> # ---- Top drivers of attrition by odds ratio (visual) ----
+> # Assumes you already have: model <- glm(..., family = binomial, data = data)
+> 
+> library(dplyr)
+> library(ggplot2)
+> 
+> # Marriott-ish palette for effects
+> effect_colors <- c("Increases attrition" = "#E57200",  # orange
++                    "Decreases attrition" = "#000000")  # black
+> 
+> # 1) Extract coefficients + Wald CIs; compute Odds Ratios
+> coefs <- coef(summary(model))
+> wald_ci <- confint.default(model)  # faster than confint(model)
+> 
+> drivers <- data.frame(
++   term     = rownames(coefs),
++   estimate = coefs[, "Estimate"],
++   p_value  = coefs[, "Pr(>|z|)"],
++   stringsAsFactors = FALSE
++ ) %>%
++   filter(term != "(Intercept)") %>%
++   mutate(
++     OR      = exp(estimate),
++     CI_low  = exp(wald_ci[term, 1]),
++     CI_high = exp(wald_ci[term, 2]),
++     # how far from 1.0 (neutral) each OR is
++     abs_effect = abs(log(OR)),
++     effect_dir = ifelse(OR >= 1, "Increases attrition", "Decreases attrition")
++   )
+> 
+> # 2) Prettify term names for plotting
+> pretty_term <- function(x) {
++   x <- gsub("^OverTime", "OverTime: ", x)
++   x <- gsub("^Department", "Department: ", x)
++   x <- gsub("^JobRole", "Job Role: ", x)
++   x <- gsub("Yes$", "Yes", x)
++   x <- gsub("No$", "No", x)
++   x <- gsub("_", " ", x)
++   x <- gsub("EnvironmentSatisfaction", "Environment Satisfaction", x)
++   x <- gsub("JobSatisfaction", "Job Satisfaction", x)
++   x <- gsub("WorkLifeBalance", "Work-Life Balance", x)
++   x
++ }
+> drivers$term_pretty <- pretty_term(drivers$term)
+> 
+> # 3) Top 10 by magnitude (distance of OR from 1)
+> top10 <- drivers %>%
++   arrange(desc(abs_effect)) %>%
++   slice(1:10) %>%
++   mutate(term_pretty = factor(term_pretty, levels = rev(term_pretty)))  # plot top at top
+> 
+> # 4) Plot
+> ggplot(top10, aes(x = term_pretty, y = OR, fill = effect_dir)) +
++   geom_col(width = 0.7) +
++   geom_errorbar(aes(ymin = CI_low, ymax = CI_high), width = 0.15) +
++   geom_text(aes(label = sprintf("%.2f×", OR)),
++             hjust = -0.1, size = 3.5, color = "black") +
++   coord_flip() +
++   scale_fill_manual(values = effect_colors) +
++   expand_limits(y = max(top10$CI_high) * 1.15) +
++   labs(title = "Top 10 Drivers of Attrition (Odds Ratios, 95% CI)",
++        x = NULL, y = "Odds Ratio (×)",
++        fill = NULL) +
++   theme_minimal(base_size = 12) +
++   theme(
++     plot.title = element_text(size = 14, face = "bold"),
++     panel.grid.major = element_blank(),
++     panel.grid.minor = element_blank(),
++     legend.position = "bottom"
++   )
+> 
+> # 5) (Optional) Save the figure
+> # ggsave("attrition_top_drivers_or.png", width = 9, height = 6, dpi = 150)
+> 
+> # ---- Significant drivers of attrition (p < 0.05) visual ----
+> # Assumes: model <- glm(..., family = binomial, data = data)
+> 
+> library(dplyr)
+> library(ggplot2)
+> 
+> # Marriott palette for effect direction
+> effect_colors <- c("Increases attrition" = "#E57200",  # orange
++                    "Decreases attrition" = "#000000")  # black
+> 
+> # 1) Extract coefficients + Wald CIs; compute Odds Ratios
+> coefs   <- coef(summary(model))
+> wald_ci <- confint.default(model)  # (fast) use confint(model) if you prefer profile CIs
+> 
+> drivers <- data.frame(
++   term     = rownames(coefs),
++   estimate = coefs[, "Estimate"],
++   p_value  = coefs[, "Pr(>|z|)"],
++   stringsAsFactors = FALSE
++ ) %>%
++   filter(term != "(Intercept)") %>%
++   mutate(
++     OR      = exp(estimate),
++     CI_low  = exp(wald_ci[term, 1]),
++     CI_high = exp(wald_ci[term, 2]),
++     abs_effect = abs(log(OR)),
++     effect_dir = ifelse(OR >= 1, "Increases attrition", "Decreases attrition")
++   ) %>%
++   # ---- keep only statistically significant terms ----
++   filter(!is.na(p_value) & p_value < 0.05)
+> 
+> # If nothing is significant, stop with a helpful message
+> if (nrow(drivers) == 0) stop("No statistically significant drivers at p < 0.05.")
+> 
+> # 2) Prettify term labels
+> pretty_term <- function(x) {
++   x <- gsub("^OverTime", "OverTime: ", x)
++   x <- gsub("^Department", "Department: ", x)
++   x <- gsub("^JobRole", "Job Role: ", x)
++   x <- gsub("_", " ", x)
++   x <- gsub("EnvironmentSatisfaction", "Environment Satisfaction", x)
++   x <- gsub("JobSatisfaction", "Job Satisfaction", x)
++   x <- gsub("WorkLifeBalance", "Work-Life Balance", x)
++   x
++ }
+> drivers$term_pretty <- pretty_term(drivers$term)
+> 
+> # 3) Take top 10 by magnitude (distance of OR from 1)
+> topN <- drivers %>%
++   arrange(desc(abs_effect)) %>%
++   slice_head(n = min(n(), 10)) %>%
++   mutate(term_pretty = factor(term_pretty, levels = rev(term_pretty)))
+Error in `slice_head()`:
+! `n` must be a constant.
+Caused by error in `n()`:
+! Must only be used inside data-masking verbs like `mutate()`, `filter()`, and
+  `group_by()`.
+Run `rlang::last_trace()` to see where the error occurred.
+> 
+> # 4) Plot
+> ggplot(topN, aes(x = term_pretty, y = OR, fill = effect_dir)) +
++   geom_col(width = 0.7) +
++   geom_errorbar(aes(ymin = CI_low, ymax = CI_high), width = 0.15) +
++   geom_text(aes(label = sprintf("%.2f×", OR)),
++             hjust = -0.1, size = 3.5, color = "black") +
++   coord_flip() +
++   scale_fill_manual(values = effect_colors) +
++   expand_limits(y = max(topN$CI_high, na.rm = TRUE) * 1.15) +
++   labs(title = "Top Significant Drivers of Attrition (Odds Ratios, 95% CI)",
++        x = NULL, y = "Odds Ratio (×)", fill = NULL) +
++   theme_minimal(base_size = 12) +
++   theme(
++     plot.title = element_text(size = 14, face = "bold"),
++     panel.grid.major = element_blank(),
++     panel.grid.minor = element_blank(),
++     legend.position = "bottom"
++   )
+Error: object 'topN' not found
+> 
+> # Optional: save
+> # ggsave("attrition_significant_drivers_or.png", width = 9, height = 6, dpi = 150)
+> 
+> library(dplyr)
+> library(ggplot2)
+> 
+> # --- Build 'drivers' if you haven't already ---
+> coefs   <- coef(summary(model))
+> wald_ci <- confint.default(model)      # Wald CI; fast & fine for this
+> 
+> drivers <- data.frame(
++   term     = rownames(coefs),
++   estimate = coefs[, "Estimate"],
++   p_value  = coefs[, "Pr(>|z|)"],
++   stringsAsFactors = FALSE
++ ) %>%
++   filter(term != "(Intercept)") %>%
++   mutate(
++     OR      = exp(estimate),
++     CI_low  = exp(wald_ci[term, 1]),
++     CI_high = exp(wald_ci[term, 2]),
++     abs_effect = abs(log(OR)),
++     effect_dir = ifelse(OR >= 1, "Increases attrition", "Decreases attrition")
++   ) %>%
++   filter(!is.na(p_value) & p_value < 0.05)
+> 
+> stopifnot(nrow(drivers) > 0)  # helpful fail-fast
+> 
+> # --- Prettify labels ---
+> pretty_term <- function(x) {
++   x <- gsub("^OverTime", "OverTime: ", x)
++   x <- gsub("^Department", "Department: ", x)
++   x <- gsub("^JobRole", "Job Role: ", x)
++   x <- gsub("_", " ", x)
++   x <- gsub("EnvironmentSatisfaction", "Environment Satisfaction", x)
++   x <- gsub("JobSatisfaction", "Job Satisfaction", x)
++   x <- gsub("WorkLifeBalance", "Work-Life Balance", x)
++   x
++ }
+> drivers$term_pretty <- pretty_term(drivers$term)
+> 
+> # --- Pick top 10 (compute n first so it's a constant) ---
+> n_keep <- min(10L, nrow(drivers))
+> topN <- drivers %>%
++   arrange(desc(abs_effect)) %>%
++   slice_head(n = n_keep) %>%
++   mutate(term_pretty = factor(term_pretty, levels = rev(term_pretty)))
+> 
+> # --- Plot ---
+> effect_colors <- c("Increases attrition" = "#E57200",  # orange
++                    "Decreases attrition" = "#000000")  # black
+> 
+> ggplot(topN, aes(x = term_pretty, y = OR, fill = effect_dir)) +
++   geom_col(width = 0.7) +
++   geom_errorbar(aes(ymin = CI_low, ymax = CI_high), width = 0.15) +
++   geom_text(aes(label = sprintf("%.2f×", OR)),
++             hjust = -0.1, size = 3.5, color = "black") +
++   coord_flip() +
++   scale_fill_manual(values = effect_colors) +
++   expand_limits(y = max(topN$CI_high, na.rm = TRUE) * 1.15) +
++   labs(title = "Top Significant Drivers of Attrition (Odds Ratios, 95% CI)",
++        x = NULL, y = "Odds Ratio (×)", fill = NULL) +
++   theme_minimal(base_size = 12) +
++   theme(
++     plot.title = element_text(size = 14, face = "bold"),
++     panel.grid.major = element_blank(),
++     panel.grid.minor = element_blank(),
++     legend.position = "bottom"
++   )
+> 
+> library(dplyr)
+> library(ggplot2)
+> 
+> # --- Build 'drivers' if needed ---
+> coefs   <- coef(summary(model))
+> wald_ci <- confint.default(model)
+> 
+> drivers <- data.frame(
++   term     = rownames(coefs),
++   estimate = coefs[, "Estimate"],
++   p_value  = coefs[, "Pr(>|z|)"],
++   stringsAsFactors = FALSE
++ ) %>%
++   filter(term != "(Intercept)") %>%
++   mutate(
++     OR      = exp(estimate),
++     CI_low  = exp(wald_ci[term, 1]),
++     CI_high = exp(wald_ci[term, 2]),
++     abs_effect = abs(log(OR)),
++     effect_dir = ifelse(OR >= 1, "Increases attrition", "Decreases attrition")
++   ) %>%
++   filter(!is.na(p_value) & p_value < 0.05)
+> 
+> # Prettify labels
+> pretty_term <- function(x) {
++   x <- gsub("^OverTime", "OverTime: ", x)
++   x <- gsub("^Department", "Department: ", x)
++   x <- gsub("^JobRole", "Job Role: ", x)
++   x <- gsub("_", " ", x)
++   x
++ }
+> drivers$term_pretty <- pretty_term(drivers$term)
+> 
+> # Top N + label position just past the high whisker
+> n_keep <- min(10L, nrow(drivers))
+> topN <- drivers %>%
++   arrange(desc(abs_effect)) %>%
++   slice_head(n = n_keep) %>%
++   mutate(
++     term_pretty = factor(term_pretty, levels = rev(term_pretty)),
++     label_y = ifelse(is.finite(CI_high) & !is.na(CI_high), CI_high * 1.06, OR * 1.06)  # put label after whisker
++   )
+> 
+> # Colors
+> effect_colors <- c("Increases attrition" = "#E57200",  # orange
++                    "Decreases attrition" = "#000000")  # black
+> 
+> # Plot (labels after whiskers)
+> ggplot(topN, aes(x = term_pretty, y = OR, fill = effect_dir)) +
++   geom_col(width = 0.7) +
++   geom_errorbar(aes(ymin = CI_low, ymax = CI_high), width = 0.15) +
++   geom_text(aes(y = label_y, label = sprintf("%.2f×", OR)),
++             hjust = 0, size = 3.5, color = "black") +
++   coord_flip(clip = "off") +
++   scale_fill_manual(values = effect_colors) +
++   # give extra room on the right so l
++ 
++ library(dplyr)
+Error in `method(update_ggplot, list(class_any, ggplot2::ggplot))`:
+! Can't add `library(dplyr)` to a <ggplot> object.
+Run `rlang::last_trace()` to see where the error occurred.
+> library(ggplot2)
+> 
+> # --- Build 'drivers' from your fitted model ---
+> coefs   <- coef(summary(model))
+> wald_ci <- confint.default(model)   # fast Wald CI
+> 
+> drivers <- data.frame(
++   term     = rownames(coefs),
++   estimate = coefs[, "Estimate"],
++   p_value  = coefs[, "Pr(>|z|)"],
++   stringsAsFactors = FALSE
++ ) %>%
++   filter(term != "(Intercept)") %>%
++   mutate(
++     OR      = exp(estimate),
++     CI_low  = exp(wald_ci[term, 1]),
++     CI_high = exp(wald_ci[term, 2]),
++     abs_effect = abs(log(OR)),
++     effect_dir = ifelse(OR >= 1, "Increases attrition", "Decreases attrition")
++   ) %>%
++   filter(!is.na(p_value) & p_value < 0.05)
+> 
+> # Pretty labels
+> pretty_term <- function(x) {
++   x <- gsub("^OverTime", "OverTime: ", x)
++   x <- gsub("^Department", "Department: ", x)
++   x <- gsub("^JobRole", "Job Role: ", x)
++   x <- gsub("_", " ", x)
++   x
++ }
+> drivers$term_pretty <- pretty_term(drivers$term)
+> 
+> # Top N and ordering
+> n_keep <- min(10L, nrow(drivers))
+> topN <- drivers %>%
++   arrange(desc(abs_effect)) %>%
++   slice_head(n = n_keep) %>%
++   mutate(term_pretty = factor(term_pretty, levels = rev(term_pretty)))
+> 
+> # Colors
+> effect_colors <- c("Increases attrition" = "#E57200",  # orange
++                    "Decreases attrition" = "#000000")  # black
+> 
+> # ---- Plot: labels under (left of) bars ----
+> ggplot(topN, aes(x = term_pretty, y = OR, fill = effect_dir)) +
++   geom_col(width = 0.7) +
++   geom_errorbar(aes(ymin = CI_low, ymax = CI_high), width = 0.15) +
++   # Labels placed at the baseline (y = 0), under/left of bars
++   geom_text(aes(y = 0, label = sprintf("%.2f×", OR)),
++             hjust = 1, size = 3.5, color = "black") +
++   coord_flip(clip = "off") +
++   scale_fill_
+Error: object 'scale_fill_' not found
+> 
+> save.image("C:\\Users\\palak\\OneDrive\\Documents\\R Study\\IBM EDA R Workspace")
+> save.image("C:\\Users\\palak\\OneDrive\\Documents\\R Study\\R workspace V2")
+> library(dplyr)
+> library(ggplot2)
+> 
+> # -- Build 'drivers' from your fitted model --
+> coefs   <- coef(summary(model))
+> wald_ci <- confint.default(model)
+> 
+> drivers <- data.frame(
++   term     = rownames(coefs),
++   estimate = coefs[, "Estimate"],
++   p_value  = coefs[, "Pr(>|z|)"],
++   stringsAsFactors = FALSE
++ ) %>%
++   filter(term != "(Intercept)") %>%
++   mutate(
++     OR      = exp(estimate),
++     CI_low  = exp(wald_ci[term, 1]),
++     CI_high = exp(wald_ci[term, 2]),
++     abs_effect = abs(log(OR)),
++     effect_dir = ifelse(OR >= 1, "Increases attrition", "Decreases attrition")
++   ) %>%
++   filter(!is.na(p_value) & p_value < 0.05)
+> 
+> # Pretty labels
+> pretty_term <- function(x) {
++   x <- gsub("^OverTime", "OverTime: ", x)
++   x <- gsub("^Department", "Department: ", x)
++   x <- gsub("^JobRole", "Job Role: ", x)
++   x <- gsub("_", " ", x)
++   x
++ }
+> drivers$term_pretty <- pretty_term(drivers$term)
+> 
+> # Top 10 by magnitude
+> n_keep <- min(10L, nrow(drivers))
+> topN <- drivers %>%
++   arrange(desc(abs_effect)) %>%
++   slice_head(n = n_keep) %>%
++   mutate(term_pretty = factor(term_pretty, levels = rev(term_pretty)))
+> 
+> # Marriott colors
+> effect_colors <- c("Increases attrition" = "#E57200",  # orange
++                    "Decreases attrition" = "#000000")  # black
+> 
+> # --- Plot: labels UNDER the bars (left side) ---
+> ggplot(topN, aes(x = term_pretty, y = OR, fill = effect_dir)) +
++   geom_col(width = 0.7) +
++   geom_errorbar(aes(ymin = CI_low, ymax = CI_high), width = 0.15) +
++   geom_text(aes(y = 0, label = sprintf("%.2f×", OR)),
++             hjust = 1, size = 3.5, color = "black") +
++   coord_flip(clip = "off") +
++   ggplot2::scale_fill_manual(values = effect_colors) +   # <-- note full name
++   scale_y_continuous(expand = expansion(mult = c(0.25, 0.08))) +
++   labs(title = "Top Significant Drivers of Attrition (Odds Ratios, 95% CI)",
++        x = NULL, y = "Odds Ratio (×)", fill = NULL) +
++   theme_minimal(base_size = 12) +
++   theme(
++     plot.title = element_text(size = 14, face = "bold"),
++     panel.grid.major = element_blank(),
++     panel.grid.minor = element_blank(),
++     legend.position = "bottom",
++     plot.margin = margin(10, 10, 10, 30)
++   )
+> 
+> # ==== 0) Packages ====
+> # install.packages(c("dplyr","ggplot2","pROC","randomForest"))
+> library(dplyr)
+> library(ggplot2)
+> library(pROC)
+Error in library(pROC) : there is no package called ‘pROC’
+> library(randomForest)
+Error in library(randomForest) : 
+  there is no package called ‘randomForest’
+> 
+> # ==== 1) Prep ====
+> # Target as factor with "No" baseline
+> data$Attrition <- factor(trimws(as.character(data$Attrition)), levels = c("No","Yes"))
+> 
+> # Coerce likely categoricals
+> cat_cols <- intersect(c("OverTime","Department","JobRole","Gender","MaritalStatus",
++                         "BusinessTravel","EducationField"), names(data))
+> for (cc in cat_cols) data[[cc]] <- factor(trimws(as.character(data[[cc]])))
+> 
+> # Drop obvious ID/constant columns if present
+> drop_cols <- intersect(c("EmployeeNumber","EmployeeCount","StandardHours","Over18"), names(data))
+> if (length(drop_cols)) data <- data[ , setdiff(names(data), drop_cols)]
+> 
+> # Remove rows with missing target
+> data <- data[!is.na(data$Attrition), ]
+> 
+> # Optional: simple NA removal for features (keeps code clean)
+> data <- data[complete.cases(data), ]
+> 
+> # ==== 2) Train / Test split (70/30, stratified) ====
+> set.seed(42)
+> idx_yes <- which(data$Attrition=="Yes")
+> idx_no  <- which(data$Attrition=="No")
+> tr_yes  <- sample(idx_yes, size = floor(0.7*length(idx_yes)))
+> tr_no   <- sample(idx_no,  size = floor(0.7*length(idx_no)))
+> tr_idx  <- c(tr_yes, tr_no)
+> train   <- data[tr_idx, ]
+> test    <- data[-tr_idx, ]
+> 
+> # ==== 3) Build formula from available predictors ====
+> candidate_feats <- c("Age","MonthlyIncome","DistanceFromHome","YearsAtCompany",
++                      "JobLevel","JobSatisfaction","EnvironmentSatisfaction","WorkLifeBalance",
++                      "PercentSalaryHike","TrainingTimesLastYear","YearsInCurrentRole",
++                      "YearsSinceLastPromotion","YearsWithCurrManager",
++                      cat_cols)
+> feats <- intersect(candidate_feats, names(train))
+> form  <- as.formula(paste("Attrition ~", paste(feats, collapse = " + ")))
+> 
+> # ==== 4) Baseline: Logistic Regression ====
+> logit <- glm(form, data = train, family = binomial)
+> prob_logit <- predict(logit, newdata = test, type = "response")           # P(Yes)
+> 
+> # ==== 5) Random Forest (handles factors, quick baseline) ====
+> # Tip: classwt to give more weight to minority class if needed
+> class_wts <- c("No" = 1, "Yes" = max(1, sum(train$Attrition=="No")/sum(train$Attrition=="Yes")))
+> rf <- randomForest(form, data = train, ntree = 500, mtry = max(1, floor(sqrt(length(feats)))),
++                    importance = TRUE, classwt = class_wts)
+Error in randomForest(form, data = train, ntree = 500, mtry = max(1, floor(sqrt(length(feats)))),  : 
+  could not find function "randomForest"
+> prob_rf <- predict(rf, newdata = test, type = "prob")[, "Yes"]
+Error in UseMethod("predict") : 
+  no applicable method for 'predict' applied to an object of class "function"
+> 
+> # ==== 6) Metrics helper (threshold tuning for F1) ====
+> metrics_at <- function(y_true, p_yes, thr = 0.5) {
++   pred <- ifelse(p_yes >= thr, "Yes", "No")
++   cm <- table(Predicted = pred, Actual = y_true)
++   TP <- cm["Yes","Yes"]; FP <- cm["Yes","No"]; FN <- cm["No","Yes"]; TN <- cm["No","No"]
++   precision <- ifelse((TP+FP)==0, NA, TP/(TP+FP))
++   recall    <- ifelse((TP+FN)==0, NA, TP/(TP+FN))
++   f1        <- ifelse(is.na(precision)|is.na(recall)|(precision+recall)==0, NA, 2*precision*recall/(precision+recall))
++   acc       <- sum(diag(cm)) / sum(cm)
++   list(cm=cm, accuracy=acc, precision=precision, recall=recall, f1=f1)
++ }
+> 
+> best_threshold <- function(y_true, p_yes, grid = seq(0.15, 0.6, by = 0.01)) {
++   res <- sapply(grid, function(t) metrics_at(y_true, p_yes, t)$f1)
++   thr <- grid[which.max(res)]
++   data.frame(threshold = thr, F1 = max(res, na.rm = TRUE))
++ }
+> 
+> # ==== 7) Evaluate (AUC + tuned threshold for F1) ====
+> # AUC
+> auc_logit <- auc(response = test$Attrition, predictor = prob_logit, levels = c("No","Yes"))
+Error in auc(response = test$Attrition, predictor = prob_logit, levels = c("No",  : 
+  could not find function "auc"
+> auc_rf    <- auc(response = test$Attrition, predictor = prob_rf,    levels = c("No","Yes"))
+Error in auc(response = test$Attrition, predictor = prob_rf, levels = c("No",  : 
+  could not find function "auc"
+> 
+> # Threshold tuning
+> bt_logit <- best_threshold(test$Attrition, prob_logit)
+> bt_rf    <- best_threshold(test$Attrition, prob_rf)
+Error: object 'prob_rf' not found
+> 
+> m_logit <- metrics_at(test$Attrition, prob_logit, thr = bt_logit$threshold)
+> m_rf    <- metrics_at(test$Attrition, prob_rf,    thr = bt_rf$threshold)
+Error: object 'prob_rf' not found
+> 
+> list(
++   LOGIT = list(AUC = as.numeric(auc_logit), best_threshold = bt_logit, metrics = m_logit),
++   RF    = list(AUC = as.numeric(auc_rf),    best_threshold = bt_rf,    metrics = m_rf)
++ )
+Error: object 'auc_logit' not found
+> # ---------- PACKAGES ----------
+> # install.packages(c("dplyr","ggplot2","pROC","randomForest"))
+> library(dplyr)
+> library(ggplot2)
+> library(pROC)
+Error in library(pROC) : there is no package called ‘pROC’
+> library(randomForest)
+Error in library(randomForest) : 
+  there is no package called ‘randomForest’
+> 
+> # ---------- TARGET & CATEGORICAL CLEANUP ----------
+> data$Attrition <- factor(trimws(as.character(data$Attrition)), levels = c("No","Yes"))
+> 
+> cat_cols <- intersect(c("OverTime","Department","JobRole","Gender","MaritalStatus",
++                         "BusinessTravel","EducationField"), names(data))
+> data[cat_cols] <- lapply(data[cat_cols], function(x) factor(trimws(as.character(x))))
+> 
+> # Drop IDs/constant columns if present
+> drop_cols <- intersect(c("EmployeeNumber","EmployeeCount","StandardHours","Over18"), names(data))
+> if (length(drop_cols)) data <- data[ , setdiff(names(data), drop_cols), drop = FALSE]
+> 
+> # Keep complete cases (simplest)
+> df <- data[complete.cases(data), , drop = FALSE]
+> 
+> # ---------- STRATIFIED TRAIN/TEST SPLIT (70/30) ----------
+> set.seed(42)
+> idx_yes <- which(df$Attrition == "Yes")
+> idx_no  <- which(df$Attrition == "No")
+> tr_yes  <- sample(idx_yes, floor(0.7 * length(idx_yes)))
+> tr_no   <- sample(idx_no,  floor(0.7 * length(idx_no)))
+> train   <- droplevels(df[c(tr_yes, tr_no), ])
+> test    <- droplevels(df[-c(tr_yes, tr_no), ])
+> 
+> # Align factor levels in test to training
+> for (cc in cat_cols) if (cc %in% names(train)) {
++   test[[cc]] <- factor(test[[cc]], levels = levels(train[[cc]]))
++ }
+> 
+> # ---------- FEATURES & FORMULA ----------
+> candidate_feats <- c(
++   "Age","MonthlyIncome","DistanceFromHome","YearsAtCompany","JobLevel",
++   "JobSatisfaction","EnvironmentSatisfaction","WorkLifeBalance",
++   "PercentSalaryHike","TrainingTimesLastYear","YearsInCurrentRole",
++   "YearsSinceLastPromotion","YearsWithCurrManager",
++   cat_cols
++ )
+> feats <- intersect(candidate_feats, names(train))
+> form  <- as.formula(paste("Attrition ~", paste(feats, collapse = " + ")))
+> 
+> # ---------- MODELS ----------
+> # Logistic Regressi
+> 
+> ## --------- 0) CLEAN TARGET & FEATURES (package-free) ----------
+> # Ensure Attrition is a factor with "No" as the reference
+> data$Attrition <- factor(trimws(as.character(data$Attrition)), levels = c("No","Yes"))
+> 
+> # Coerce common categoricals if they exist
+> cat_cols <- intersect(c("OverTime","Department","JobRole","Gender","MaritalStatus",
++                         "BusinessTravel","EducationField"), names(data))
+> for (cc in cat_cols) data[[cc]] <- factor(trimws(as.character(data[[cc]])))
+> 
+> # Drop obvious ID/constant columns if present
+> drop_cols <- intersect(c("EmployeeNumber","EmployeeCount","StandardHours","Over18"), names(data))
+> if (length(drop_cols)) data <- data[, setdiff(names(data), drop_cols), drop = FALSE]
+> 
+> # Keep complete cases (simple, robust)
+> df <- data[complete.cases(data), , drop = FALSE]
+> 
+> ## --------- 1) STRATIFIED TRAIN/TEST SPLIT (70/30) ----------
+> set.seed(42)
+> idx_yes <- which(df$Attrition == "Yes")
+> idx_no  <- which(df$Attrition == "No")
+> tr_yes  <- sample(idx_yes, floor(0.7 * length(idx_yes)))
+> tr_no   <- sample(idx_no,  floor(0.7 * length(idx_no)))
+> train   <- df[c(tr_yes, tr_no), , drop = FALSE]
+> test    <- df[-c(tr_yes, tr_no), , drop = FALSE]
+> 
+> # Align factor levels in test to training for each categorical
+> for (cc in cat_cols) if (cc %in% names(train)) {
++   test[[cc]] <- factor(as.character(test[[cc]]), levels = levels(train[[cc]]))
++ }
+> 
+> ## --------- 2) FORMULA (use only columns you actually have) ----------
+> candidate_feats <- c(
++   "Age","MonthlyIncome","DistanceFromHome","YearsAtCompany","JobLevel",
++   "JobSatisfaction","EnvironmentSatisfaction","WorkLifeBalance",
++   "PercentSalaryHike","TrainingTimesLastYear","YearsInCurrentRole",
++   "YearsSinceLastPromotion","YearsWithCurrManager",
++   cat_cols
++ )
+> feats <- intersect(candidate_feats, names(train))
+> form  <- as.formula(paste("Attrition ~", paste(feats, collapse = " + ")))
+> form
+Attrition ~ Age + MonthlyIncome + DistanceFromHome + YearsAtCompany + 
+    JobLevel + JobSatisfaction + EnvironmentSatisfaction + WorkLifeBalance + 
+    PercentSalaryHike + TrainingTimesLastYear + YearsInCurrentRole + 
+    YearsSinceLastPromotion + YearsWithCurrManager + OverTime + 
+    Department + JobRole + Gender + MaritalStatus + BusinessTravel + 
+    EducationField
+> 
+> ## --------- 3) LOGISTIC REGRESSION ----------
+> logit <- glm(form, data = train, family = binomial)
+> prob_logit <- predict(logit, newdata = test, type = "response")  # P(Yes)
+> 
+> ## --------- 4) METRICS (manual AUC + threshold tuning) ----------
+> # Confusion-matrix metrics at a given threshold
+> metrics_at <- function(y_true, p_yes, thr = 0.5) {
++   pred <- ifelse(p_yes >= thr, "Yes", "No")
++   cm <- table(Predicted = factor(pred, levels = c("No","Yes")),
++               Actual    = factor(y_true, levels = c("No","Yes")_
+Error: unexpected input in:
+"  cm <- table(Predicted = factor(pred, levels = c("No","Yes")),
+              Actual    = factor(y_true, levels = c("No","Yes")_"
+> # Confusion-matrix metrics at a given threshold (clean version)
+> metrics_at <- function(y_true, p_yes, thr = 0.5) {
++   pred <- ifelse(p_yes >= thr, "Yes", "No")
++   cm <- table(
++     Predicted = factor(pred,   levels = c("No","Yes")),
++     Actual    = factor(y_true, levels = c("No","Yes"))
++   )
++   TP <- cm["Yes","Yes"]; FP <- cm["Yes","No"]; FN <- cm["No","Yes"]; TN <- cm["No","No"]
++   precision <- ifelse((TP+FP)==0, NA_real_, TP/(TP+FP))
++   recall    <- ifelse((TP+FN)==0, NA_real_, TP/(TP+FN))
++   f1        <- ifelse(is.na(precision)|is.na(r
++ # Manual AUC (no packages)
++ auc_manual <- function(y_true, p_yes) {
+Error: unexpected symbol in:
+"# Manual AUC (no packages)
+auc_manual"
+>   y <- ifelse(y_true == "Yes", 1, 0)
+Error: object 'y_true' not found
+>   r <- rank(p_yes, ties.method = "average")
+Error: object 'p_yes' not found
+>   n1 <- sum(y == 1); n0 <- sum(y == 0)
+Error: object 'y' not found
+>   if (n1 == 0 || n0 == 0) return(NA_real_)
+Error: object 'n1' not found
+>   sum_r_pos <- sum(r[y == 1])
+Error: object 'r' not found
+>   (sum_r_pos - n1*(n1 + 1)/2) / (n1 * n0)
+Error: object 'sum_r_pos' not found
+> }
+Error: unexpected '}' in "}"
+> 
+> best_threshold <- function(y_true, p_yes, grid = seq(0.15, 0.60, by = 0.01)) {
++   f1s <- sapply(grid, function(t) metrics_at(y_true, p_yes, t)$f1)
++   grid[which.max(f1s)]
++ }
+> 
+> # Evaluate your existing logistic probs
+> auc_logit <- auc_manual(test$Attrition, prob_logit)
+Error in auc_manual(test$Attrition, prob_logit) : 
+  could not find function "auc_manual"
+> thr_logit <- best_threshold(test$Attrition, prob_logit)
+> met_logit <- metrics_at(test$Attrition, prob_logit, thr = thr_logit)
+> 
+> list(
++   LOGIT = list(
++     AUC = auc_logit,
++     best_threshold = thr_logit,
++     metrics = c(Accuracy=met_logit$accuracy,
++                 Precision=met_logit$precision,
++                 Recall=met_logit$recall,
++                 F1=met_logit$f1),
++     Confusion_Matrix = met_logit$cm
++   )
++ )
+Error: object 'auc_logit' not found
+> ## ====================== PREDICTIVE ATTRITION (BASE R) ======================
+> 
+> ## 0) BASIC CHECK
+> stopifnot(exists("data"))   # make sure your dataset is named `data`
+> 
+> ## 1) CLEAN TARGET & FEATURES
+> # Ensure Attrition is factor with levels c("No","Yes")
+> data$Attrition <- factor(trimws(as.character(data$Attrition)), levels = c("No","Yes"))
+> 
+> # Likely categorical columns present in your file (convert if they exist)
+> cat_cols <- intersect(
++   c("OverTime","Department","JobRole","Gender","MaritalStatus",
++     "BusinessTravel","EducationField"),
++   names(data)
++ )
+> for (cc in cat_cols) data[[cc]] <- factor(trimws(as.character(data[[cc]])))
+> 
+> # Likely numeric columns (convert safely if needed)
+> num_cols <- intersect(
++   c("Age","MonthlyIncome","DistanceFromHome","YearsAtCompany","JobLevel",
++     "JobSatisfaction","EnvironmentSatisfaction","WorkLifeBalance",
++     "PercentSalaryHike","TrainingTimesLastYear","YearsInCurrentRole",
++     "YearsSinceLastPromotion","YearsWithCurrManager"),
++   names(data)
++ )
+> for (nn in num_cols) data[[nn]] <- suppressWarnings(as.numeric(as.character(data[[nn]])))
+> 
+> # Drop obvious ID/constant columns if present
+> drop_cols <- intersect(c("EmployeeNumber","EmployeeCount","StandardHours","Over18"), names(data))
+> if (length(drop_cols)) data <- data[, setdiff(names(data), drop_cols), drop = FALSE]
+> 
+> # Keep complete cases (simple + robust)
+> df <- data[complete.cases(data), , drop = FALSE]
+> 
+> ## 2) STRATIFIED TRAIN/TEST SPLIT (70/30)
+> set.seed(42)
+> idx_yes <- which(df$Attrition == "Yes")
+> idx_no  <- which(df$Attrition == "No")
+> if (length(idx_yes) < 2 || length(idx_no) < 2) stop("Not enough Yes/No examples for a split.")
+> 
+> tr_yes <- sample(idx_yes, floor(0.7 * length(idx_yes)))
+> tr_no  <- sample(idx_no,  floor(0.7 * length(idx_no)))
+> train  <- df[c(tr_yes, tr_no), , drop = FALSE]
+> test   <- df[-c(tr_yes, tr_no), , drop = FALSE]
+> 
+> # Align test factor levels to training (prevents 'new levels' errors)
+> for (cc in cat_cols) if (cc %in% names(train)) {
++   test[[cc]] <- factor(as.character(test[[cc]]), levels = levels(train[[cc]]))
++ }
+> 
+> ## 3) FORMULA (use the columns you actually have)
+> candidate_feats <- c(num_cols, cat_cols)
+> feats <- intersect(candidate_feats, names(train))
+> form  <- as.formula(paste("Attrition ~", paste(feats, collapse = " + ")))
+> cat("Model formula:\n"); print(form)
+Model formula:
+Attrition ~ Age + MonthlyIncome + DistanceFromHome + YearsAtCompany + 
+    JobLevel + JobSatisfaction + EnvironmentSatisfaction + WorkLifeBalance + 
+    PercentSalaryHike + TrainingTimesLastYear + YearsInCurrentRole + 
+    YearsSinceLastPromotion + YearsWithCurrManager + OverTime + 
+    Department + JobRole + Gender + MaritalStatus + BusinessTravel + 
+    EducationField
+> 
+> ## 4) FIT LOGISTIC REGRESSION
+> logit <- glm(form, data = train, family = binomial)
+> prob  <- predict(logit, newdata = test, type = "response")  # P(Yes)
+> stopifnot(length(prob) == nrow(test))
+> 
+> ## 5) METRICS (confusion matrix, AUC, threshold tuning) — PACKAGE-FREE
+> metrics_at <- function(y_true, p_yes, thr = 0.5) {
++   pred <- ifelse(p_yes >= thr, "Yes", "No")
++   cm <- table(
++     Predicted = factor(pred,   levels = c("No","Yes")),
++     Actual    = factor(y_true, levels = c("No","Yes"))
++   )
++   TP <- cm["Yes","Yes"]; FP <- cm["Yes","No"]; FN <- cm["No","Yes"]; TN <- cm["No","No"]
++   precision <- ifelse((TP+FP)==0, NA_real_, TP/(TP+FP))
++   recall    <- ifelse((TP+FN)==0, NA_real_, TP/(TP+FN))
++   f1        <- ifelse(is.na(precision) || is.na(recall) || (precision+recall)==0, NA_real_,
++                       2*precision*recall/(precision+recall))
++   acc <- sum(diag(cm)) / sum(cm)
++   list(cm = cm, accuracy = acc, precision = precision, recall = recall, f1 = f1)
++ }
+> 
+> # Manual AUC via rank statistic (Mann–Whitney U) — no packages
+> auc_manual <- function(y_true, p_yes) {
++   y <- ifelse(y_true == "Yes", 1, 0)
++   r <- rank(p_yes, ties.method = "average")
++   n1 <- sum(y == 1); n0 <- sum(y == 0)
++   if (n1 == 0 || n0 == 0) return(NA_real_)
++   sum_r_pos <- sum(r[y == 1])
++   (sum_r_pos - n1*(n1 + 1)/2) / (n1 * n0)
++ }
+> 
+> # Scan thresholds to maximize F1 (tune for imbalance)
+> best_threshold <- function(y_true, p_yes, grid = seq(0.15, 0.60, by = 0.01)) {
++   f1s <- sapply(grid, function(t) metrics_at(y_true, p_yes, t)$f1)
++   grid[which.max(f1s)]
++ }
+> 
+> auc  <- auc_manual(test$Attrition, prob)
+> thr  <- best_threshold(test$Attrition, prob)
+> mets <- metrics_at(test$Attrition, prob, thr)
+> 
+> ## 6) PRINT RESULTS
+> cat("\n==== Predictive Performance (Logistic) ====\n")
+
+==== Predictive Performance (Logistic) ====
+> cat(sprintf("AUC (manual): %.3f\n", auc))
+AUC (manual): 0.801
+> cat(sprintf("Best threshold (by F1): %.2f\n", thr))
+Best threshold (by F1): 0.22
+> cat(sprintf("Accuracy: %.3f | Precision: %.3f | Recall: %.3f | F1: %.3f\n",
++             mets$accuracy, mets$precision, mets$recall, mets$f1))
+Accuracy: 0.821 | Precision: 0.467 | Recall: 0.681 | F1: 0.554
+> cat("\nConfusion Matrix (rows = Predicted, cols = Actual):\n")
+
+Confusion Matrix (rows = Predicted, cols = Actual):
+> print(mets$cm)
+         Actual
+Predicted  No Yes
+      No  314  23
+      Yes  56  49
+> 
+> # Top effects (odds ratios) for interpretation
+> co <- summary(logit)$coefficients
+> co <- co[rownames(co)!="(Intercept)", , drop = FALSE]
+> odds <- data.frame(term = rownames(co),
++                    OR = exp(co[, "Estimate"]),
++                    p = co[, "Pr(>|z|)"],
++                    row.names = NULL)
+> odds <- odds[order(-abs(log(odds$OR))), ]
+> cat("\nTop effects (Odds Ratios):\n")
+
+Top effects (Odds Ratios):
+> print(head(odds, 10), row.names = FALSE)
+                             term           OR            p
+           JobRoleHuman Resources 3.150675e+07 9.943881e-01
+                  DepartmentSales 1.347192e+07 9.946643e-01
+         JobRoleResearch Director 9.817051e-08 9.833984e-01
+ DepartmentResearch & Development 4.836215e+06 9.949972e-01
+                      OverTimeYes 6.792633e+00 9.540391e-17
+  BusinessTravelTravel_Frequently 5.845851e+00 2.204820e-04
+              MaritalStatusSingle 4.770905e+00 6.288499e-07
+     JobRoleLaboratory Technician 4.372547e+00 9.190619e-03
+      JobRoleSales Representative 2.868942e+00 4.770176e-01
+                   JobRoleManager 3.548904e-01 4.039047e-01
+> ## ==================== END ====================
+> 
+> grid <- seq(0.10, 0.60, by = 0.01)
+> scan_tbl <- data.frame(
++   threshold = grid,
++   precision = NA_real_,
++   recall    = NA_real_,
++   F1        = NA_real_
++ )
+> for (i in seq_along(grid)) {
++   m <- metrics_at(test$Attrition, prob, thr = grid[i])
++   scan_tbl$precision[i] <- m$precision
++   scan_tbl$recall[i]    <- m$recall
++   scan_tbl$F1[i]        <- m$F1
++ }
+Error in scan_tbl$F1[i] <- m$F1 : replacement has length zero
+> 
+> # Example choices:
+> # If interventions are expensive, prefer precision >= 0.60 (fewer false alarms):
+> thr_prec60 <- with(subset(scan_tbl, precision >= 0.60), threshold[which.max(recall)])
+> 
+> # If catching leavers matters most, pick recall >= 0.80:
+> thr_rec80  <- with(subset(scan_tbl, recall >= 0.80), threshold[which.max(precision)])
+> 
+> thr_prec60; thr_rec80
+numeric(0)
+numeric(0)
+> 
+> # 1) Scan thresholds (fix names: use 'grid', and m$f1 lowercase)
+> grid <- seq(0.10, 0.60, by = 0.01)
+> scan_tbl <- data.frame(
++   threshold = grid,
++   precision = NA_real_,
++   recall    = NA_real_,
++   F1        = NA_real_
++ )
+> 
+> for (i in seq_along(grid)) {
++   m <- metrics_at(test$Attrition, prob, thr = grid[i])
++   scan_tbl$precision[i] <- m$precision
++   scan_tbl$recall[i]    <- m$recall
++   scan_tbl$F1[i]        <- m$f1       # <-- lowercase!
++ }
+> 
+> # 2) Best overall threshold by F1 (robust to NA)
+> best_idx <- which.max(ifelse(is.na(scan_tbl$F1), -Inf, scan_tbl$F1))
+> thr_best <- scan_tbl$threshold[best_idx]
+> m_best   <- metrics_at(test$Attrition, prob,
++ 
++ metrics_at(test$Attrition, prob, thr_prec60)
++ metrics_at(test$Attrition, prob, thr_rec80)
+Error: unexpected symbol in:
+"metrics_at(test$Attrition, prob, thr_prec60)
+metrics_at"
+> 
+> # Finish the best-threshold evaluation
+> m_best <- metrics_at(test$Attrition, prob, thr = thr_best)
+> 
+> cat("\n==== Best-by-F1 operating point ====\n")
+
+==== Best-by-F1 operating point ====
+> cat(sprintf("Threshold: %.2f\n", thr_best))
+Threshold: 0.22
+> cat(sprintf("Accuracy: %.3f | Precision: %.3f | Recall: %.3f | F1: %.3f\n",
++             m_best$accuracy, m_best$precision, m_best$recall, m_best$f1))
+Accuracy: 0.821 | Precision: 0.467 | Recall: 0.681 | F1: 0.554
+> cat("\nConfusion Matrix (rows=Predicted, cols=Actual):\n"); print(m_best$cm)
+
+Confusion Matrix (rows=Predicted, cols=Actual):
+         Actual
+Predicted  No Yes
+      No  314  23
+      Yes  56  49
+> 
+> # ---- Optional business targets ----
+> # 1) If interventions are expensive, prefer precision >= 0.60 (fewer false alarms)
+> sub_prec60 <- subset(scan_tbl, precision >= 0.60)
+> if (nrow(sub_prec60)) {
++   thr_prec60 <- sub_prec60$threshold[which.max(sub_prec60$recall)]
++   m_prec60   <- metrics_at(test$Attrition, prob, thr = thr_prec60)
++   cat("\n-- High-precision operating point (precision >= 0.60) --\n")
++   cat(sprintf("Threshold: %.2f | Acc: %.3f | Prec: %.3f | Rec: %.3f | F1: %.3f\n",
++               thr_prec60, m_prec60$accuracy, m_prec60$precision, m_prec60$recall, m_p_
++ 
++ # -- High-precision operating point (precision >= 0.60)
++ sub_prec60 <- subset(scan_tbl, precision >= 0.60)
+Error: unexpected symbol in:
+"# -- High-precision operating point (precision >= 0.60)
+sub_prec60"
+> if (nrow(sub_prec60)) {
++   thr_prec60 <- sub_prec60$threshold[which.max(sub_prec60$recall)]
++   m_prec60   <- metrics_at(test$Attrition, prob, thr = thr_prec60)
++ 
++   cat("\n-- High-precision operating point (precision >= 0.60) --\n")
++   cat(sprintf("Threshold: %.2f\n", thr_prec60))
++   cat(sprintf("Accuracy: %.3f | Precision: %.3f | Recall: %.3f | F1: %.3f\n",
++               m_prec60$accuracy, m_prec60$precision, m_prec60$recall, m_prec60$f1))
++   cat("Confusion Matrix (rows=Predicted, cols=Actual):\n"); print(m_prec60$cm)
++ } else {
++   cat("\nNo threshold in the scanned grid achieves precision >= 0.60.\n",
++       "Try raising the threshold or widen the grid (e.g., seq(0.10, 0.90, 0.01)).\n", sep = "")
++ }
+
+-- High-precision operating point (precision >= 0.60) --
+Threshold: 0.37
+Accuracy: 0.864 | Precision: 0.611 | Recall: 0.458 | F1: 0.524
+Confusion Matrix (rows=Predicted, cols=Actual):
+         Actual
+Predicted  No Yes
+      No  349  39
+      Yes  21  33
+> 
+> # -- High-recal
+> 
