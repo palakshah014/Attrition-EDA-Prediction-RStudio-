@@ -1,0 +1,58 @@
+name: R – EDA & Prediction CI
+
+on:
+  push:
+    branches: [ main, master ]
+  pull_request:
+
+jobs:
+  build-run:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set up R
+        uses: r-lib/actions/setup-r@v2
+        with:
+          r-version: 'release'
+
+      - name: Set up Pandoc
+        uses: r-lib/actions/setup-pandoc@v2
+
+      # Use renv if a lockfile is present (recommended)
+      - name: Restore renv (if lockfile exists)
+        if: ${{ hashFiles('renv.lock') != '' }}
+        uses: r-lib/actions/setup-renv@v2
+
+      # Fallback: install minimal CRAN packages if no renv.lock
+      - name: Install minimal packages (no renv.lock)
+        if: ${{ hashFiles('renv.lock') == '' }}
+        shell: bash
+        run: |
+          Rscript -e 'options(repos="https://cloud.r-project.org"); install.packages(c("dplyr","ggplot2"))'
+
+      - name: Run analysis pipeline
+        shell: bash
+        run: |
+          Rscript -e 'if (!file.exists("scripts/run_all.R")) stop("scripts/run_all.R not found"); source("scripts/run_all.R")'
+
+      - name: Render report (if report.Rmd exists)
+        shell: bash
+        run: |
+          Rscript -e 'if (file.exists("report.Rmd")) { options(repos="https://cloud.r-project.org"); if (!requireNamespace("rmarkdown", quietly=TRUE)) install.packages("rmarkdown"); rmarkdown::render("report.Rmd", output_dir = "outputs") }'
+
+      - name: Upload figures
+        uses: actions/upload-artifact@v4
+        with:
+          name: figures
+          path: figures/**
+          if-no-files-found: ignore
+
+      - name: Upload outputs
+        uses: actions/upload-artifact@v4
+        with:
+          name: outputs
+          path: outputs/**
+          if-no-files-found: ignore
